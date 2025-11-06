@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class ImageToAnchor : MonoBehaviour
+public class ARImageToAnchor : MonoBehaviour
 {
     [Header("Scene")]
     [SerializeField] private Transform sceneRoot;
@@ -12,13 +12,6 @@ public class ImageToAnchor : MonoBehaviour
     private ARTrackedImageManager trackedImageManager;
     private ARAnchorManager anchorManager;
     private ARAnchor anchor;
-
-    [Header("Scene")]
-    [SerializeField] private Image top;
-    [SerializeField] private Image down;
-    [SerializeField] private Image left;
-    [SerializeField] private Image right;
-    [SerializeField] private TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -66,12 +59,6 @@ public class ImageToAnchor : MonoBehaviour
             sceneRoot.SetPositionAndRotation(anchor.transform.position, anchor.transform.rotation);
             sceneRoot.gameObject.SetActive(true);
 
-            top.color = Color.green;
-            down.color = Color.green;
-            left.color = Color.green;
-            right.color = Color.green;
-            text.text = "Calibrated !";
-
             trackedImageManager.enabled = false;
             Debug.Log("[ImageToAnchor] Anchor created & image tracking disabled.");
         }
@@ -83,13 +70,6 @@ public class ImageToAnchor : MonoBehaviour
 
         anchorManager.TryRemoveAnchor(anchor);
         anchor = null;
-
-        top.color = Color.red;
-        down.color = Color.red;
-        left.color = Color.red;
-        right.color = Color.red;
-
-        text.text = "Re-calibration...";
 
         trackedImageManager.enabled = true;
         Debug.Log("[ImageToAnchor] Reset - image tracking re-enabled.");

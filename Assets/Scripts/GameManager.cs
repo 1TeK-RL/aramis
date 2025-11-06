@@ -1,19 +1,12 @@
 using UnityEngine;
 
-public enum GameState
+public enum GameState { Init, Customize, Objective, Gameplay, Win, Lose }
+public enum NbPlayers { One, Two }
+public enum CalibrationState
 {
-    Init,
-    Customize,
-    Objective,
-    Gameplay,
-    Win,
-    Lose
-}
-
-public enum PlayerNumber
-{
-    One,
-    Two
+    NotCalibrated,
+    Calibrating,
+    Calibrated
 }
 
 public class GameManager : MonoBehaviour
@@ -22,7 +15,9 @@ public class GameManager : MonoBehaviour
 
     public GameState CurrentState { get; private set; }
 
-    public PlayerNumber CurrentPlayer { get; set; }
+    public NbPlayers CurrentNbPlayers { get; set; }
+
+    public CalibrationState CurrentCalibrationState { get; set; }
 
     public event System.Action<GameState> OnGameStateChanged;
 
@@ -85,16 +80,21 @@ public class GameManager : MonoBehaviour
     public void GoToCustomizeWithOnePlayer()
     {
         SetState(GameState.Customize);
-        CurrentPlayer = PlayerNumber.One;
+        CurrentNbPlayers = NbPlayers.One;
     }
 
     public void GoToCustomizeWithTwoPlayers()
     {
         SetState(GameState.Customize);
-        CurrentPlayer = PlayerNumber.Two;
+        CurrentNbPlayers = NbPlayers.Two;
     }
 
     public void GoToObjective()
+    {
+        SetState(GameState.Objective);
+    }
+
+    public void GoToGameplay()
     {
         SetState(GameState.Gameplay);
     }

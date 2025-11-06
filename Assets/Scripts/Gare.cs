@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Gare : MonoBehaviour
 {
-    [SerializeField] private GameManager GameManager;
+    [SerializeField] private GameManagerv2 GameManager;
     [SerializeField] public int gareID;
     [SerializeField] public Transform StartingPosition;
     [SerializeField] public int StartingSpline;

@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour
+public class GameManagerv2 : MonoBehaviour
 {
     [SerializeField] GameObject GareParent;
     public  List<Gare> gares = new List<Gare>();
