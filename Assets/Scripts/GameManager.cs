@@ -1,12 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { Init, Customize, Objective, Gameplay, Win, Lose }
-public enum NbPlayers { One, Two }
-public enum CalibrationState
+public enum GameState
 {
-    NotCalibrated,
-    Calibrating,
-    Calibrated
+    Title,
+    Customize,
+    Objective,
+    Gameplay,
+    Win,
+    Lose
+}
+
+public enum NbPlayers 
+{
+    One,
+    Two
 }
 
 public class GameManager : MonoBehaviour
@@ -14,13 +22,21 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public GameState CurrentState { get; private set; }
-
-    public NbPlayers CurrentNbPlayers { get; set; }
-
-    public CalibrationState CurrentCalibrationState { get; set; }
+    public NbPlayers CurrentNbPlayers { get; private set; }
 
     public event System.Action<GameState> OnGameStateChanged;
 
+    [SerializeField] GameObject GareParent;
+    public List<Gare> gares = new List<Gare>();
+    public List<Gare> possibleGares = new List<Gare>();
+    [SerializeField] WagonController trainController;
+    [SerializeField] GameObject trainObject;
+    [SerializeField] TMPro.TextMeshProUGUI objectifText;
+    [SerializeField] int numberofObjectifs;
+    int objectifCount = 0;
+
+    private Gare startingGare;
+    private Gare objectifGare;
 
     private void Awake()
     {
@@ -36,57 +52,64 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SetState(GameState.Init);
+        SetState(GameState.Title);
+
+        foreach (Transform child in GareParent.transform)
+        {
+            Gare gare = child.GetComponent<Gare>();
+            if (gare != null)
+            {
+                gares.Add(gare);
+                possibleGares.Add(gare);
+            }
+        }
+
+        if (gares.Count > 0)
+        {
+            int Random = UnityEngine.Random.Range(0, gares.Count);
+            startingGare = gares[Random];
+            objectifText.text = "Start at : " + startingGare.gareID;
+            possibleGares.RemoveAt(Random);
+        }
     }
 
     public void SetState(GameState newState)
     {
         CurrentState = newState;
-
-        Debug.Log($"Game state changed to: {newState}");
-
-        // Notify listeners (UIManager, AudioManager, etc.)
         OnGameStateChanged?.Invoke(newState);
 
-        // Optional internal logic (if GameManager needs to react)
         switch (newState)
         {
-            case GameState.Init:
-                HandleInit();
+            case GameState.Title:
                 break;
 
             case GameState.Customize:
-                HandleCustomize();
                 break;
 
             case GameState.Objective:
-                HandleObjective();
                 break;
 
             case GameState.Gameplay:
-                HandleGameplay();
                 break;
 
             case GameState.Win:
-                HandleWin();
                 break;
 
             case GameState.Lose:
-                HandleLose();
                 break;
         }
     }
 
     public void GoToCustomizeWithOnePlayer()
     {
-        SetState(GameState.Customize);
         CurrentNbPlayers = NbPlayers.One;
+        SetState(GameState.Customize);
     }
 
     public void GoToCustomizeWithTwoPlayers()
     {
-        SetState(GameState.Customize);
         CurrentNbPlayers = NbPlayers.Two;
+        SetState(GameState.Customize);
     }
 
     public void GoToObjective()
@@ -99,36 +122,38 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Gameplay);
     }
 
-
-    #region Handlers (optional to keep logic separated)
-    private void HandleInit()
+    public void StartGame()
     {
-        // Example: load profile, setup managers, preload resources...
+        trainController.startingGare = startingGare;
+        trainController.startingSplineID = startingGare.StartingSpline;
+        trainController.StartGame();
+        FindObjectif();
     }
 
-    private void HandleCustomize()
+    public void FindObjectif()
     {
-        // Example: show customization UI
+        if (objectifCount < numberofObjectifs - 1)
+        {
+            int Random = UnityEngine.Random.Range(0, possibleGares.Count);
+            objectifGare = possibleGares[Random];
+            possibleGares.RemoveAt(Random);
+            objectifText.text = "Go to : " + objectifGare.gareID;
+
+            objectifCount++;
+        }
+        else
+        {
+            objectifText.text = "Return to : " + startingGare.gareID;
+            objectifGare = startingGare;
+        }
+
     }
 
-    private void HandleObjective()
+    public void ArriverGare(int gareID)
     {
-        // Example: show objective popup
+        if (gareID == objectifGare.gareID)
+        {
+            FindObjectif();
+        }
     }
-
-    private void HandleGameplay()
-    {
-        // Example: start timers, spawn enemies, etc.
-    }
-
-    private void HandleWin()
-    {
-        // Example: stop gameplay, show win screen
-    }
-
-    private void HandleLose()
-    {
-        // Example: stop gameplay, show lose screen
-    }
-    #endregion
 }

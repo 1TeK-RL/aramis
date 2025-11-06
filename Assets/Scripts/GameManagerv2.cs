@@ -7,7 +7,7 @@ public class GameManagerv2 : MonoBehaviour
     [SerializeField] GameObject GareParent;
     public  List<Gare> gares = new List<Gare>();
     public List<Gare> possibleGares = new List<Gare>();
-    [SerializeField] TrainController trainController;
+    [SerializeField] WagonController trainController;
     [SerializeField] GameObject trainObject;
     [SerializeField] TMPro.TextMeshProUGUI objectifText;
     [SerializeField] int numberofObjectifs;

@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -29,15 +27,28 @@ public class ARImageToAnchor : MonoBehaviour
         trackedImageManager.trackablesChanged.RemoveListener(OnTrackablesChanged);
     }
 
+    private void Start()
+    {
+        anchor = null;
+    }
+
     private void OnTrackablesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> args)
     {
         foreach (var added in args.added)
         {
+            if (anchor == null)
+            {
+                UIManager.Instance.SetCalibrationState(CalibrationState.Calibrating);
+            }
             TryCreateAnchorFrom(added);
         }
 
         foreach (var updated in args.updated)
         {
+            if (anchor == null)
+            {
+                UIManager.Instance.SetCalibrationState(CalibrationState.Calibrating);
+            }
             TryCreateAnchorFrom(updated);
         }
     }
@@ -56,6 +67,8 @@ public class ARImageToAnchor : MonoBehaviour
         {
             anchor = result.value;
 
+            UIManager.Instance.SetCalibrationState(CalibrationState.Calibrated);
+
             sceneRoot.SetPositionAndRotation(anchor.transform.position, anchor.transform.rotation);
             sceneRoot.gameObject.SetActive(true);
 
@@ -70,6 +83,8 @@ public class ARImageToAnchor : MonoBehaviour
 
         anchorManager.TryRemoveAnchor(anchor);
         anchor = null;
+
+        UIManager.Instance.SetCalibrationState(CalibrationState.NotCalibrated);
 
         trackedImageManager.enabled = true;
         Debug.Log("[ImageToAnchor] Reset - image tracking re-enabled.");

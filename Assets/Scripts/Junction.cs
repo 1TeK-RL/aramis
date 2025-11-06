@@ -17,7 +17,7 @@ public class Junction : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Junction triggered");
-        TrainController train = other.GetComponent<TrainController>();
+        WagonController train = other.GetComponent<WagonController>();
         if (train != null)
         {
             train.HitJunction(rails);

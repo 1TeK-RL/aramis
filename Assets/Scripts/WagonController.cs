@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem.LowLevel;
 using Unity.Mathematics;
 
-public class TrainController : MonoBehaviour
+public class WagonController : MonoBehaviour
 {
     [Header("Références")]
     public Rigidbody rb;
