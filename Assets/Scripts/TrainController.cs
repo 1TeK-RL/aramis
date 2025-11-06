@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.Splines;
 using NUnit.Framework;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.LowLevel;
+using Unity.Mathematics;
 
 public class TrainController : MonoBehaviour
 {
@@ -12,10 +14,13 @@ public class TrainController : MonoBehaviour
     public SplineContainer splineContainer;
     [SerializeField] private Transform startPosition;
     [SerializeField] private TMPro.TextMeshProUGUI DirectionButtonText;
+    [SerializeField] private GameObject trainObject;
 
     private Spline currentSpline;
+    public int startingSplineID;
 
     [Header("Paramètres du train")]
+    [SerializeField] public Gare startingGare;
     public float maxSpeed = 20f;
     public float acceleration = 10f;
 
@@ -26,12 +31,59 @@ public class TrainController : MonoBehaviour
 
     private void Start()
     {
+        trainObject.SetActive(false);
         IsLeft = true;
         DirectionButtonText.text = "Left";
         currentSpline = splineContainer.Splines[0];
     }
 
-    public void HitJunction(List<int> rails)
+    public void StartGame()
+    {
+        currentSpline = splineContainer.Splines[startingSplineID];
+        startPosition.position = startingGare.StartingPosition.position;
+
+        SetPosition();
+    }
+    
+
+private void SetPosition()
+{
+        // 1. Vérifie les références
+        if (currentSpline == null || splineContainer == null)
+        {
+            Debug.LogError("Spline ou SplineContainer non défini !");
+            return;
+        }
+
+        // 2. Récupère la position de départ en espace local du SplineContainer
+        Vector3 startWorldPos = startPosition.position;
+        Vector3 localPos = splineContainer.transform.InverseTransformPoint(startWorldPos);
+
+        // 3. Trouve le point le plus proche sur la spline
+        SplineUtility.GetNearestPoint(currentSpline, localPos, out float3 nearestT, out float nearestLocalPoint);
+
+        // 4. Convertit la position locale (float3) renvoyée en Vector3 monde
+        Vector3 newPos = splineContainer.transform.TransformPoint(nearestT);
+
+        // 5. Met à jour la distance correspondante sur la spline
+        float splineLength = currentSpline.GetLength();
+        distanceOnSpline = nearestLocalPoint * splineLength;
+
+        // 6. Calcule la tangente dans le bon espace (en local, puis convertie en monde)
+        Vector3 localTangent = currentSpline.EvaluateTangent(nearestLocalPoint);
+        Vector3 worldTangent = splineContainer.transform.TransformDirection(localTangent).normalized;
+
+        // 7. Calcule la rotation orientée selon la tangente
+        Quaternion newRot = Quaternion.LookRotation(worldTangent, Vector3.up);
+
+        // 8. Active et place le train
+        trainObject.SetActive(true);
+        rb.MovePosition(newPos);
+        rb.MoveRotation(newRot);
+    }
+
+
+public void HitJunction(List<int> rails)
     {
         Vector3 currentWorldPos = rb.position;
 
@@ -140,4 +192,6 @@ public class TrainController : MonoBehaviour
             DirectionButtonText.text = "Left";
         }
     }
+
+   
 }
