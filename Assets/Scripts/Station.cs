@@ -2,19 +2,31 @@ using UnityEngine;
 
 public class Station : MonoBehaviour
 {
-    [SerializeField] private GameManager GameManager;
-    [SerializeField] public int gareID;
-    [SerializeField] public Transform StartingPosition;
-    [SerializeField] public int StartingSpline;
-
+    [Header("Station Settings")]
+    [SerializeField] private int id;
+    [SerializeField] private int idSpline;
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Junction triggered");
-        WagonController train = other.GetComponent<WagonController>();
-        if (train != null)
+        WagonController wagon = other.GetComponent<WagonController>();
+        if (wagon != null)
         {
-            GameManager.ArriverGare(gareID);
+            GameManager.Instance.ArrivedInStation(id);
         }
+    }
+
+    public int GetStationID()
+    {
+        return id;
+    }
+
+    public Vector3 GetDockPosition()
+    {
+        return transform.GetChild(0).position;
+    }
+
+    public int GetSplineID()
+    {
+        return idSpline;
     }
 }

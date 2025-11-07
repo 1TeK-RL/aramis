@@ -1603,37 +1603,6 @@ MonoBehaviour:
   m_DeprecatedInstances: []
   m_AutoRefresh: 1
   m_Seed: 687558238
---- !u!1 &2466564663472405889
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5938300483538316831}
-  m_Layer: 0
-  m_Name: StartPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5938300483538316831
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2466564663472405889}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5549353522749006921}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4099911651434392810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,13 +1629,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.006, y: 0.006, z: 0.006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3493792789675241058}
   - {fileID: 4200220161882506798}
   - {fileID: 4234376914740038091}
-  - {fileID: 5938300483538316831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6309387061405265001
@@ -1679,7 +1647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4234376914740038091}
   m_Layer: 0
-  m_Name: Gares
+  m_Name: Stations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1799,7 +1767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5671694966343484120, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
       propertyPath: m_Name
-      value: Gare
+      value: Station_0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1943,7 +1911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5671694966343484120, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
       propertyPath: m_Name
-      value: Gare (2)
+      value: Station_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2087,7 +2055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5671694966343484120, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
       propertyPath: m_Name
-      value: Gare (3)
+      value: Station_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2375,7 +2343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5671694966343484120, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
       propertyPath: m_Name
-      value: Gare (1)
+      value: Station_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2675,6 +2643,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: rail
+      value: 
+      objectReference: {fileID: 5169408371888915239}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.1
@@ -2724,7 +2696,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5169408371888915239}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4871958346489698247, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}

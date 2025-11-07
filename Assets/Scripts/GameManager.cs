@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum GameState
 {
@@ -26,17 +27,17 @@ public class GameManager : MonoBehaviour
 
     public event System.Action<GameState> OnGameStateChanged;
 
-    [SerializeField] GameObject GareParent;
-    public List<Station> gares = new List<Station>();
-    public List<Station> possibleGares = new List<Station>();
-    [SerializeField] WagonController trainController;
-    [SerializeField] GameObject trainObject;
-    [SerializeField] TMPro.TextMeshProUGUI objectifText;
-    [SerializeField] int numberofObjectifs;
-    int objectifCount = 0;
+    [SerializeField] private GameObject stationsParent;
+    [SerializeField] private WagonController currentWagon;
+    [SerializeField] private TextMeshProUGUI objectiveText;
+    [SerializeField] private int objectiveMax;
 
-    private Station startingGare;
-    private Station objectifGare;
+    private List<Station> stations = new List<Station>();
+
+    private Station startingStation;
+    private Station nextStation;
+
+    private int objectiveCount = 0;
 
     private void Awake()
     {
@@ -54,22 +55,55 @@ public class GameManager : MonoBehaviour
     {
         SetState(GameState.Title);
 
-        foreach (Transform child in GareParent.transform)
+        foreach (GameObject stationChild in stationsParent.transform)
         {
-            Station gare = child.GetComponent<Station>();
-            if (gare != null)
+            Station station = stationChild.GetComponent<Station>();
+            if (station != null)
             {
-                gares.Add(gare);
-                possibleGares.Add(gare);
+                stations.Add(station);
             }
         }
 
-        if (gares.Count > 0)
+        if (stations.Count > 0)
         {
-            int Random = UnityEngine.Random.Range(0, gares.Count);
-            startingGare = gares[Random];
-            objectifText.text = "Start at : " + startingGare.gareID;
-            possibleGares.RemoveAt(Random);
+            int Random = UnityEngine.Random.Range(0, stations.Count);
+            startingStation = stations[Random];
+            stations.RemoveAt(Random);
+
+            objectiveText.text = "Start at : " + startingStation.GetStationID();
+        }
+    }
+
+    public void StartGame()
+    {
+        currentWagon.StartGameplay(startingStation);
+        FindObjective();
+    }
+
+    private void FindObjective()
+    {
+        if (objectiveCount < objectiveMax - 1)
+        {
+            int Random = UnityEngine.Random.Range(0, stations.Count);
+            nextStation = stations[Random];
+            stations.RemoveAt(Random);
+            objectiveText.text = "Go to : " + nextStation.GetStationID();
+
+            objectiveCount++;
+        }
+        else
+        {
+            objectiveText.text = "Return to : " + startingStation.GetStationID();
+            nextStation = startingStation;
+        }
+
+    }
+
+    public void ArrivedInStation(int stationID)
+    {
+        if (stationID == nextStation.GetStationID())
+        {
+            FindObjective();
         }
     }
 
@@ -120,40 +154,5 @@ public class GameManager : MonoBehaviour
     public void GoToGameplay()
     {
         SetState(GameState.Gameplay);
-    }
-
-    public void StartGame()
-    {
-        trainController.startingGare = startingGare;
-        trainController.startingSplineID = startingGare.StartingSpline;
-        trainController.StartGame();
-        FindObjectif();
-    }
-
-    public void FindObjectif()
-    {
-        if (objectifCount < numberofObjectifs - 1)
-        {
-            int Random = UnityEngine.Random.Range(0, possibleGares.Count);
-            objectifGare = possibleGares[Random];
-            possibleGares.RemoveAt(Random);
-            objectifText.text = "Go to : " + objectifGare.gareID;
-
-            objectifCount++;
-        }
-        else
-        {
-            objectifText.text = "Return to : " + startingGare.gareID;
-            objectifGare = startingGare;
-        }
-
-    }
-
-    public void ArriverGare(int gareID)
-    {
-        if (gareID == objectifGare.gareID)
-        {
-            FindObjectif();
-        }
     }
 }
