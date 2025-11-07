@@ -31,7 +31,7 @@ public class WagonController : MonoBehaviour
     private void Start()
     {
         IsPlaced = false;
-        trainObject.SetActive(false);
+        trainObject.SetActive(true);
         IsLeft = true;
         DirectionButtonText.text = "Left";
         currentSpline = splineContainer.Splines[0];

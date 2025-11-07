@@ -3,12 +3,13 @@ using UnityEngine.UI;
 
 public class ColorButton : MonoBehaviour
 {
-    public PersonnalisationManager customizer;
-    public Color color;
+    
+    public Color PrimaryColor;
+    public Color SecondaryColor;
 
     public void ApplyColor()
     {
-        customizer.SetColor(color);
+        PersonnalisationManager.Instance.SetColor(PrimaryColor, SecondaryColor);
     }
 }
 
