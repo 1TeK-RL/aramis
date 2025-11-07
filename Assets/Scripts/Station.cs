@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Gare : MonoBehaviour
+public class Station : MonoBehaviour
 {
-    [SerializeField] private GameManagerv2 GameManager;
+    [SerializeField] private GameManager GameManager;
     [SerializeField] public int gareID;
     [SerializeField] public Transform StartingPosition;
     [SerializeField] public int StartingSpline;

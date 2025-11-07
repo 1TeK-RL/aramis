@@ -27,16 +27,16 @@ public class GameManager : MonoBehaviour
     public event System.Action<GameState> OnGameStateChanged;
 
     [SerializeField] GameObject GareParent;
-    public List<Gare> gares = new List<Gare>();
-    public List<Gare> possibleGares = new List<Gare>();
+    public List<Station> gares = new List<Station>();
+    public List<Station> possibleGares = new List<Station>();
     [SerializeField] WagonController trainController;
     [SerializeField] GameObject trainObject;
     [SerializeField] TMPro.TextMeshProUGUI objectifText;
     [SerializeField] int numberofObjectifs;
     int objectifCount = 0;
 
-    private Gare startingGare;
-    private Gare objectifGare;
+    private Station startingGare;
+    private Station objectifGare;
 
     private void Awake()
     {
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
         foreach (Transform child in GareParent.transform)
         {
-            Gare gare = child.GetComponent<Gare>();
+            Station gare = child.GetComponent<Station>();
             if (gare != null)
             {
                 gares.Add(gare);

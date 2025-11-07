@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 2178811375700301594}
   - component: {fileID: 5564860567176103757}
   m_Layer: 0
-  m_Name: Gare
+  m_Name: Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
