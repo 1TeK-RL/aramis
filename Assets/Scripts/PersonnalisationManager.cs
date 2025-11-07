@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class PersonnalisationManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Header("Référence du wagon à personnaliser")]
+    public Renderer wagonRenderer; // le MeshRenderer ou SkinnedMeshRenderer du wagon
 
-    // Update is called once per frame
-    void Update()
+    [Header("Index du matériau à changer")]
+    public int materialIndex = 0; // si ton wagon a plusieurs matériaux, choisis lequel modifier
+
+    // Fonction appelée par les boutons
+
+    private void Awake()
     {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+    
 }
