@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Splines;
-using Unity.Mathematics;
 using TMPro;
+using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.Splines;
+using UnityEngine.UI;
 
 public class WagonController : MonoBehaviour
 {
@@ -19,6 +19,10 @@ public class WagonController : MonoBehaviour
     private Spline currentSpline;
     private Rigidbody rb;
 
+    private WagonData recordingData;
+    private float elapsedTime = 0f;
+    private bool IsRecording = false;
+
     private float currentSpeed = 0f;
     private float distanceOnSpline = 0f;
 
@@ -32,7 +36,6 @@ public class WagonController : MonoBehaviour
 
     private void Start()
     {
-        gameObject.SetActive(false);
         textDirection.text = "Left";
         isPlaced = false;
         isLeft = true;
@@ -48,7 +51,7 @@ public class WagonController : MonoBehaviour
     {
         if (currentSpline == null || splineContainer == null) return;
 
-        gameObject.SetActive(true);
+        speedSlider.value = 0f;
 
         Vector3 startWorldPos = startPos;
         rb.position = startWorldPos;
@@ -106,6 +109,17 @@ public class WagonController : MonoBehaviour
 
             rb.MovePosition(newWorldPos);
             rb.MoveRotation(newRot);
+
+            if (recordingData != null && IsRecording == true)
+            {
+                elapsedTime += Time.fixedDeltaTime;
+                recordingData.paths.Add(new WagonData.PathPoint
+                {
+                    position = transform.position,
+                    rotation = transform.rotation,
+                    elapsedTime = elapsedTime
+                });
+            }
         }
     }
 
@@ -130,5 +144,25 @@ public class WagonController : MonoBehaviour
             isLeft = true;
             textDirection.text = "Left";
         }
+    }
+
+    public void BeginRecording()
+    {
+        recordingData = new WagonData();
+        elapsedTime = 0;
+        IsRecording = true;
+    }
+
+    public WagonData StopRecording()
+    {
+        IsRecording = false;
+
+        transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+        isPlaced = false;
+
+        textDirection.text = "Left";
+        isLeft = true;
+
+        return recordingData;
     }
 }

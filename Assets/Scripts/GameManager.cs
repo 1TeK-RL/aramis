@@ -27,17 +27,20 @@ public class GameManager : MonoBehaviour
 
     public event System.Action<GameState> OnGameStateChanged;
 
-    [SerializeField] private GameObject stationsParent;
+    [Header("References")]
     [SerializeField] private WagonController currentWagon;
+    [SerializeField] private GameObject stationsParent;
     [SerializeField] private TextMeshProUGUI objectiveText;
-    [SerializeField] private int objectiveMax;
 
-    private List<Station> stations = new List<Station>();
+    [Header("Objective Settings")]
+    [SerializeField, Range(1, 3)] private int objectiveMax;
+    
+    private List<Station> allStations = new List<Station>();
 
+    private List<Station> currentRoute;
     private Station startingStation;
     private Station nextStation;
-
-    private int objectiveCount = 0;
+    private int objectiveCount;
 
     private void Awake()
     {
@@ -55,55 +58,67 @@ public class GameManager : MonoBehaviour
     {
         SetState(GameState.Title);
 
-        foreach (GameObject stationChild in stationsParent.transform)
+        foreach (Transform stationChild in stationsParent.transform)
         {
             Station station = stationChild.GetComponent<Station>();
             if (station != null)
             {
-                stations.Add(station);
+                allStations.Add(station);
             }
         }
-
-        if (stations.Count > 0)
-        {
-            int Random = UnityEngine.Random.Range(0, stations.Count);
-            startingStation = stations[Random];
-            stations.RemoveAt(Random);
-
-            objectiveText.text = "Start at : " + startingStation.GetStationID();
-        }
     }
 
-    public void StartGame()
+    private void SetupObjective()
     {
-        currentWagon.StartGameplay(startingStation);
-        FindObjective();
+        objectiveCount = 0;
+        currentRoute = new List<Station>();
+
+        startingStation = allStations[Random.Range(0, allStations.Count)];
+        currentRoute.Add(startingStation);
+
+        List<Station> availableStations = new List<Station>(allStations);
+        availableStations.Remove(startingStation);
+
+        int steps = Mathf.Clamp(objectiveMax, 1, availableStations.Count);
+        for (int i = 0; i < steps; i++)
+        {
+            int randomIndex = Random.Range(0, availableStations.Count);
+            Station next = availableStations[randomIndex];
+            currentRoute.Add(next);
+            availableStations.RemoveAt(randomIndex);
+        }
+
+        currentRoute.Add(startingStation);
+
+        objectiveText.text = "Start at : " + startingStation.GetStationID();
     }
 
-    private void FindObjective()
+    private void NextObjective()
     {
-        if (objectiveCount < objectiveMax - 1)
-        {
-            int Random = UnityEngine.Random.Range(0, stations.Count);
-            nextStation = stations[Random];
-            stations.RemoveAt(Random);
-            objectiveText.text = "Go to : " + nextStation.GetStationID();
+        objectiveCount++;
 
-            objectiveCount++;
-        }
-        else
+        if (objectiveCount < currentRoute.Count)
         {
-            objectiveText.text = "Return to : " + startingStation.GetStationID();
-            nextStation = startingStation;
+            nextStation = currentRoute[objectiveCount];
+            string prefix = (objectiveCount == currentRoute.Count - 1) ? "Return to : " : "Go to : ";
+            objectiveText.text = prefix + nextStation.GetStationID();
         }
-
     }
 
     public void ArrivedInStation(int stationID)
     {
+        if (nextStation == null) return;
+
         if (stationID == nextStation.GetStationID())
         {
-            FindObjective();
+            if (nextStation == startingStation && objectiveCount == currentRoute.Count - 1)
+            {
+                objectiveText.text = "You returned to start!";
+                SetState(GameState.Win);
+                return;
+            }
+
+            NextObjective();
         }
     }
 
@@ -127,11 +142,20 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Win:
+                WagonData result = currentWagon.StopRecording();
+
+                GhostManager.Instance.SpawnGhost(result);
+
                 break;
 
             case GameState.Lose:
                 break;
         }
+    }
+
+    public void GoToTitle()
+    {
+        SetState(GameState.Title);
     }
 
     public void GoToCustomizeWithOnePlayer()
@@ -148,11 +172,18 @@ public class GameManager : MonoBehaviour
 
     public void GoToObjective()
     {
+        SetupObjective();
+
         SetState(GameState.Objective);
     }
 
     public void GoToGameplay()
     {
         SetState(GameState.Gameplay);
+
+        currentWagon.BeginRecording();
+        currentWagon.StartGameplay(startingStation);
+
+        NextObjective();
     }
 }

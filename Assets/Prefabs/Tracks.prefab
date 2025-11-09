@@ -1787,6 +1787,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.61
@@ -1829,7 +1833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (7)
+      value: Junction_7
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -1858,8 +1862,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 4234376914740038091}
     m_Modifications:
     - target: {fileID: 2178811375700301594, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
+      propertyPath: id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178811375700301594, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
       propertyPath: gareID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178811375700301594, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
+      propertyPath: idSpline
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2178811375700301594, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
       propertyPath: StartingSpline
@@ -1931,6 +1943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 162.24
@@ -1973,7 +1989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (3)
+      value: Junction_3
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2001,6 +2017,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4234376914740038091}
     m_Modifications:
+    - target: {fileID: 2178811375700301594, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
+      propertyPath: id
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2178811375700301594, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
       propertyPath: gareID
       value: 3
@@ -2075,6 +2095,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 158.28
@@ -2117,7 +2141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (5)
+      value: Junction_5
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2145,6 +2169,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.66
@@ -2187,7 +2215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (8)
+      value: Junction_8
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2215,6 +2243,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: 'idSplines.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: 'idSplines.Array.data[1]'
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 135.58
@@ -2257,7 +2297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (9)
+      value: Junction_9
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2289,6 +2329,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4234376914740038091}
     m_Modifications:
+    - target: {fileID: 2178811375700301594, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
+      propertyPath: id
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2178811375700301594, guid: 7a6fb815e35710941a7f4952af65ff91, type: 3}
       propertyPath: gareID
       value: 1
@@ -2363,6 +2407,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: 'idSplines.Array.data[1]'
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.7
@@ -2405,7 +2457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (1)
+      value: Junction_1
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2433,6 +2485,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: 'idSplines.Array.data[1]'
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 138.25
@@ -2475,7 +2535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (6)
+      value: Junction_6
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2503,6 +2563,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 163.9
@@ -2545,7 +2609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (4)
+      value: Junction_4
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2573,6 +2637,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4200220161882506798}
     m_Modifications:
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: 'idSplines.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: 'idSplines.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 78.06
@@ -2615,7 +2691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction (2)
+      value: Junction_2
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2647,6 +2723,14 @@ PrefabInstance:
       propertyPath: rail
       value: 
       objectReference: {fileID: 5169408371888915239}
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: idSplines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417036205655080339, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: 'idSplines.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7521059787787477747, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.1
@@ -2689,7 +2773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
-      value: Junction
+      value: Junction_0
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
