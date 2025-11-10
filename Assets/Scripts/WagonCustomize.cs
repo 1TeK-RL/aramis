@@ -12,28 +12,33 @@ public class WagonCustomize : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text2;
     [SerializeField] private TextMeshProUGUI text3;
 
-
-    public void SetColor(Color PrimaryColor, Color SecondaryColor)
+    void Start()
+    {
+        Debug.Log("Nombre de matériaux dans le renderer : " + porteRenderer.materials.Length);
+        for (int i = 0; i < porteRenderer.materials.Length; i++)
+        {
+            Debug.Log($"Matériau [{i}] : {porteRenderer.materials[i].name}");
+        }
+    }
+    public void SetMaterial(WagonMaterial wagonMaterial)
     {
         if (wagonRenderer == null || materialIndicesToChange.Length < 2) return;
 
+        // On récupère tous les matériaux actuels du renderer
         Material[] mats = wagonRenderer.materials;
         Material[] porteMats = porteRenderer.materials;
+        
 
-        Material newMaterial1 = new Material(mats[materialIndicesToChange[0]]);
-        Material newMaterialporte1 = new Material(porteMats[2]);
-        newMaterial1.color = PrimaryColor;
-        newMaterialporte1.color = PrimaryColor;
-        mats[materialIndicesToChange[0]] = newMaterial1;
-        porteMats[2] = newMaterialporte1;
+        // On s’assure que les indices sont valides
+        if (materialIndicesToChange[0] < mats.Length)
+            mats[materialIndicesToChange[0]] = wagonMaterial.PrimaryMaterial;
+        porteMats[2] = wagonMaterial.PrimaryMaterial;
 
-        Material newMaterial2 = new Material(mats[materialIndicesToChange[1]]);
-        newMaterial2.color = SecondaryColor;
-        mats[materialIndicesToChange[1]] = newMaterial2;
-        Material newMaterialporte2 = new Material(porteMats[1]);
-        newMaterialporte2.color = SecondaryColor;
-        porteMats[1] = newMaterialporte2;
+        if (materialIndicesToChange[1] < mats.Length)
+            mats[materialIndicesToChange[1]] = wagonMaterial.SecondaryMaterial;
+        porteMats[1] = wagonMaterial.SecondaryMaterial;
 
+        // On réaffecte le tableau de matériaux au renderer
         wagonRenderer.materials = mats;
         porteRenderer.materials = porteMats;
     }

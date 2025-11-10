@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class ColorButton : MonoBehaviour
+public class ButtonColor : MonoBehaviour
 {
-    [SerializeField] private Color PrimaryColor;
-    [SerializeField] private Color SecondaryColor;
+    [SerializeField] WagonMaterial material;
 
     public void ApplyColor()
     {
-        CustomizeManager.Instance.SetColor(PrimaryColor, SecondaryColor);
+        CustomizeManager.Instance.SetMaterial(material);
     }
 }
 
