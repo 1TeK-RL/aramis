@@ -1,15 +1,13 @@
-    using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine;
 
 public class ColorButton : MonoBehaviour
 {
-    
-    public Color PrimaryColor;
-    public Color SecondaryColor;
+    [SerializeField] private Color PrimaryColor;
+    [SerializeField] private Color SecondaryColor;
 
     public void ApplyColor()
     {
-        PersonnalisationManager.Instance.SetColor(PrimaryColor, SecondaryColor);
+        CustomizeManager.Instance.SetColor(PrimaryColor, SecondaryColor);
     }
 }
 

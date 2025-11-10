@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3523066659714137609}
   - component: {fileID: 6507082785811608237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wagon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2090797919c08284398ebf574666944c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wagonRenderer: {fileID: 0}
+  porteRenderer: {fileID: 0}
+  materialIndicesToChange: 
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  text3: {fileID: 0}
 --- !u!1 &1344664694457348861
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +79,7 @@ Transform:
   m_GameObject: {fileID: 1344664694457348861}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1777854, y: -0.4713518, z: 0.097658195, w: 0.8583023}
-  m_LocalPosition: {x: 91.490005, y: 7.6166677, z: 28.150002}
+  m_LocalPosition: {x: 16, y: 7.6166677, z: -11.5}
   m_LocalScale: {x: 166.66667, y: 166.66666, z: 166.66667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4400801133667184197}
   - component: {fileID: 131624907884133377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wagon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,6 +226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2090797919c08284398ebf574666944c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wagonRenderer: {fileID: 0}
+  porteRenderer: {fileID: 0}
+  materialIndicesToChange: 
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  text3: {fileID: 0}
 --- !u!1 &7062574347714675988
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7626281772683485587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wagons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +277,6 @@ GameObject:
   - component: {fileID: 1766488207018005496}
   - component: {fileID: 298922851710273936}
   - component: {fileID: 3079663820268728769}
-  - component: {fileID: 7443272177409413654}
   m_Layer: 0
   m_Name: Wagon
   m_TagString: Untagged
@@ -355,18 +366,6 @@ MonoBehaviour:
   textDirection: {fileID: 0}
   maxSpeed: 20
   acceleration: 10
---- !u!114 &7443272177409413654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7187728255096354295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2090797919c08284398ebf574666944c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3383504844924253782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,6 +374,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3523066659714137609}
     m_Modifications:
+    - target: {fileID: -8896016183994444981, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c830376c20251b349ad6b62e4376e178, type: 3}
       propertyPath: m_LocalScale.x
       value: 155.46095
@@ -427,9 +430,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6790452769022960912, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5664496851257485273, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3795945779130592281, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -954596387632994051, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 825894089210680117, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c830376c20251b349ad6b62e4376e178, type: 3}
       propertyPath: m_Name
       value: Wagon_V1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412956293964658305, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498452215739575195, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260084285604772260, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664422482286799217, guid: c830376c20251b349ad6b62e4376e178, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

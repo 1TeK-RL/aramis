@@ -23,7 +23,7 @@ public class GhostManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SpawnGhost(WagonData data)
+    public void SpawnGhost(WagonPathing data)
     {
         if (ghosts.Count >= maxGhosts)
         {

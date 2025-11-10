@@ -1,27 +1,25 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class WagonCustomize : MonoBehaviour
 {
     [SerializeField] private Renderer wagonRenderer;
     [SerializeField] private Renderer porteRenderer;
 
-    public int[] materialIndicesToChange;
+    [SerializeField] private int[] materialIndicesToChange;
 
-    public TextMeshProUGUI text1;
-    public TextMeshProUGUI text2;
-    public TextMeshProUGUI text3;
+    [SerializeField] private TextMeshProUGUI text1;
+    [SerializeField] private TextMeshProUGUI text2;
+    [SerializeField] private TextMeshProUGUI text3;
 
 
     public void SetColor(Color PrimaryColor, Color SecondaryColor)
     {
         if (wagonRenderer == null || materialIndicesToChange.Length < 2) return;
 
-        // Clone le tableau de matériaux pour ne pas modifier sharedMaterials
         Material[] mats = wagonRenderer.materials;
         Material[] porteMats = porteRenderer.materials;
 
-        // Material primaire
         Material newMaterial1 = new Material(mats[materialIndicesToChange[0]]);
         Material newMaterialporte1 = new Material(porteMats[2]);
         newMaterial1.color = PrimaryColor;
@@ -29,7 +27,6 @@ public class WagonCustomize : MonoBehaviour
         mats[materialIndicesToChange[0]] = newMaterial1;
         porteMats[2] = newMaterialporte1;
 
-        // Material secondaire
         Material newMaterial2 = new Material(mats[materialIndicesToChange[1]]);
         newMaterial2.color = SecondaryColor;
         mats[materialIndicesToChange[1]] = newMaterial2;

@@ -6,6 +6,6 @@ public class ButtonWagon : MonoBehaviour
 
     public void ChangeWagon()
     {
-        PersonnalisationManager.Instance.ChangeWagon(wagon);
+        CustomizeManager.Instance.ChangeWagon(wagon);
     }
 }

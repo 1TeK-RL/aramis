@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class WagonData
+public class WagonPathing
 {
-    public string trainName;
-    public Color color;
-    public int modelId;
-
     public List<PathPoint> paths = new();
 
     [Serializable]

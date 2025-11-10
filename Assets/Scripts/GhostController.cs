@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class GhostController : MonoBehaviour
 {
-    private WagonData data;
+    private WagonPathing data;
     private float elapsedTime = 0f;
     private int currentIndex = 0;
 
-    public void Play(WagonData recordedData)
+    public void Play(WagonPathing recordedData)
     {
         data = recordedData;
     }
@@ -22,7 +22,7 @@ public class GhostController : MonoBehaviour
             currentIndex++;
         }
 
-        WagonData.PathPoint step = data.paths[currentIndex];
+        WagonPathing.PathPoint step = data.paths[currentIndex];
         transform.SetPositionAndRotation(step.position, step.rotation);
 
         if (elapsedTime > data.paths[data.paths.Count - 1].elapsedTime)

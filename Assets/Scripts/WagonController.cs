@@ -19,7 +19,7 @@ public class WagonController : MonoBehaviour
     private Spline currentSpline;
     private Rigidbody rb;
 
-    private WagonData recordingData;
+    private WagonPathing recordingData;
     private float elapsedTime = 0f;
     private bool IsRecording = false;
 
@@ -113,7 +113,7 @@ public class WagonController : MonoBehaviour
             if (recordingData != null && IsRecording == true)
             {
                 elapsedTime += Time.fixedDeltaTime;
-                recordingData.paths.Add(new WagonData.PathPoint
+                recordingData.paths.Add(new WagonPathing.PathPoint
                 {
                     position = transform.position,
                     rotation = transform.rotation,
@@ -148,12 +148,12 @@ public class WagonController : MonoBehaviour
 
     public void BeginRecording()
     {
-        recordingData = new WagonData();
+        recordingData = new WagonPathing();
         elapsedTime = 0;
         IsRecording = true;
     }
 
-    public WagonData StopRecording()
+    public WagonPathing StopRecording()
     {
         IsRecording = false;
 
