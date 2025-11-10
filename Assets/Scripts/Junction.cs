@@ -8,10 +8,9 @@ public class Junction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        WagonController wagon = other.GetComponent<WagonController>();
-        if (wagon != null)
+        if (other.CompareTag("Player"))
         {
-            wagon.HitJunction(idSplines);
+            other.GetComponent<WagonController>().HitJunction(idSplines);
         }
     }
 }

@@ -9,7 +9,7 @@ public class GhostManager : MonoBehaviour
     [SerializeField] private Transform ghostParent;
     [SerializeField] private int maxGhosts = 10;
 
-    private Queue<GameObject> ghosts = new Queue<GameObject>();
+    private readonly Queue<GameObject> ghosts = new();
 
     private void Awake()
     {
@@ -28,11 +28,32 @@ public class GhostManager : MonoBehaviour
         if (ghosts.Count >= maxGhosts)
         {
             GameObject oldGhost = ghosts.Dequeue();
-            Destroy(oldGhost);
+            if (oldGhost != null)
+            {
+                Destroy(oldGhost);
+            }
         }
 
         GameObject ghost = Instantiate(ghostPrefab, ghostParent);
         ghost.GetComponent<GhostController>().Play(data);
         ghosts.Enqueue(ghost);
+    }
+
+    public void DestroyGhost(GameObject ghost)
+    {
+        if (ghost == null) return;
+
+        if (ghosts.Contains(ghost))
+        {
+            List<GameObject> temp = new(ghosts);
+            temp.Remove(ghost);
+            ghosts.Clear();
+            foreach (var g in temp)
+            {
+                ghosts.Enqueue(g);
+            }
+        }
+
+        Destroy(ghost);
     }
 }

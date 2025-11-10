@@ -18,10 +18,11 @@ public class WagonController : MonoBehaviour
 
     private Spline currentSpline;
     private Rigidbody rb;
+    private BoxCollider boxCollider;
 
     private WagonPathing recordingData;
     private float elapsedTime = 0f;
-    private bool IsRecording = false;
+    private bool isRecording = false;
 
     private float currentSpeed = 0f;
     private float distanceOnSpline = 0f;
@@ -32,6 +33,7 @@ public class WagonController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -39,12 +41,19 @@ public class WagonController : MonoBehaviour
         textDirection.text = "Left";
         isPlaced = false;
         isLeft = true;
+        boxCollider.enabled = false;
     }
 
-    public void StartGameplay(Station startStation)
+    public void SetupGameplay(Station startStation)
     {
         currentSpline = splineContainer.Splines[startStation.GetSplineID()];
         SetPosition(startStation.GetDockPosition());
+    }
+
+    public void StartGameplay()
+    {
+        isPlaced = true;
+        boxCollider.enabled = true;
     }
 
     private void SetPosition(Vector3 startPos)
@@ -52,9 +61,12 @@ public class WagonController : MonoBehaviour
         if (currentSpline == null || splineContainer == null) return;
 
         speedSlider.value = 0f;
+        currentSpeed = 0f;
+        distanceOnSpline = 0f;
 
         Vector3 startWorldPos = startPos;
-        rb.position = startWorldPos;
+
+        transform.position = startWorldPos;
 
         Vector3 localPos = splineContainer.transform.InverseTransformPoint(startWorldPos);
 
@@ -65,12 +77,9 @@ public class WagonController : MonoBehaviour
         Vector3 worldTangent = splineContainer.transform.TransformDirection(currentSpline.EvaluateTangent(nearestT)).normalized;
         Quaternion newRot = Quaternion.LookRotation(worldTangent, Vector3.up);
 
-        rb.position = newWorldPos;
-        rb.rotation = newRot;
+        transform.SetPositionAndRotation(newWorldPos, newRot);
 
         distanceOnSpline = nearestT * currentSpline.GetLength();
-
-        isPlaced = true;
     }
 
     private void FixedUpdate()
@@ -89,6 +98,7 @@ public class WagonController : MonoBehaviour
             SplineUtility.GetNearestPoint(currentSpline, localPos, out float3 nearestPoint, out float nearestT);
 
             float splineLength = currentSpline.GetLength();
+
             distanceOnSpline = nearestT * splineLength;
             distanceOnSpline += currentSpeed * Time.fixedDeltaTime;
 
@@ -110,9 +120,11 @@ public class WagonController : MonoBehaviour
             rb.MovePosition(newWorldPos);
             rb.MoveRotation(newRot);
 
-            if (recordingData != null && IsRecording == true)
+            
+            if (recordingData != null && isRecording == true)
             {
                 elapsedTime += Time.fixedDeltaTime;
+
                 recordingData.paths.Add(new WagonPathing.PathPoint
                 {
                     position = transform.position,
@@ -150,14 +162,15 @@ public class WagonController : MonoBehaviour
     {
         recordingData = new WagonPathing();
         elapsedTime = 0;
-        IsRecording = true;
+        isRecording = true;
     }
 
     public WagonPathing StopRecording()
     {
-        IsRecording = false;
+        boxCollider.enabled = false;
+        gameObject.SetActive(false);
 
-        transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+        isRecording = false;
         isPlaced = false;
 
         textDirection.text = "Left";

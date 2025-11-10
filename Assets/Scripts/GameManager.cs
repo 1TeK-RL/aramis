@@ -1,6 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public enum GameState
 {
@@ -31,16 +32,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WagonController currentWagon;
     [SerializeField] private GameObject stationsParent;
     [SerializeField] private TextMeshProUGUI objectiveText;
+    [SerializeField] private TextMeshProUGUI timerText;
 
     [Header("Objective Settings")]
     [SerializeField, Range(1, 3)] private int objectiveMax;
-    
+
+    [Header("Gameplay Timer")]
+    [SerializeField] private float maxGameTime = 120f;
+
     private List<Station> allStations = new List<Station>();
 
     private List<Station> currentRoute;
     private Station startingStation;
     private Station nextStation;
     private int objectiveCount;
+
+    private float remainingTime;
+    private Coroutine gameplayTimerRoutine;
 
     private void Awake()
     {
@@ -113,7 +121,6 @@ public class GameManager : MonoBehaviour
         {
             if (nextStation == startingStation && objectiveCount == currentRoute.Count - 1)
             {
-                objectiveText.text = "You returned to start!";
                 SetState(GameState.Win);
                 return;
             }
@@ -136,54 +143,74 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Objective:
+                SetupObjective();
+                currentWagon.gameObject.SetActive(true);
+                currentWagon.SetupGameplay(startingStation);
                 break;
 
             case GameState.Gameplay:
+                StartTimer();
+                currentWagon.StartGameplay();
+                currentWagon.BeginRecording();
+                NextObjective();
                 break;
 
             case GameState.Win:
-                WagonPathing result = currentWagon.StopRecording();
-
-                GhostManager.Instance.SpawnGhost(result);
-
+                StopTimer();
+                WagonPathing resultWin = currentWagon.StopRecording();
+                GhostManager.Instance.SpawnGhost(resultWin);
                 break;
 
             case GameState.Lose:
+                StopTimer();
+                _ = currentWagon.StopRecording();
                 break;
         }
     }
 
-    public void GoToTitle()
+    public void GoToTitle() => SetState(GameState.Title);
+    public void GoToCustomizeWithOnePlayer() {CurrentNbPlayers = NbPlayers.One; SetState(GameState.Customize);}
+    public void GoToCustomizeWithTwoPlayers() {CurrentNbPlayers = NbPlayers.Two; SetState(GameState.Customize);}
+    public void GoToObjective() => SetState(GameState.Objective);
+    public void GoToGameplay() => SetState(GameState.Gameplay);
+
+    private void StartTimer()
     {
-        SetState(GameState.Title);
+        StopTimer();
+        remainingTime = maxGameTime;
+        gameplayTimerRoutine = StartCoroutine(GameplayTimer());
     }
 
-    public void GoToCustomizeWithOnePlayer()
+    private void StopTimer()
     {
-        CurrentNbPlayers = NbPlayers.One;
-        SetState(GameState.Customize);
+        if (gameplayTimerRoutine != null)
+        {
+            StopCoroutine(gameplayTimerRoutine);
+            gameplayTimerRoutine = null;
+        }
     }
 
-    public void GoToCustomizeWithTwoPlayers()
+    private IEnumerator GameplayTimer()
     {
-        CurrentNbPlayers = NbPlayers.Two;
-        SetState(GameState.Customize);
+        while (remainingTime > 0f)
+        {
+            remainingTime -= Time.deltaTime;
+            UpdateTimerUI();
+            yield return null;
+        }
+
+        if (CurrentState == GameState.Gameplay)
+        {
+            SetState(GameState.Lose);
+        }
     }
 
-    public void GoToObjective()
+    private void UpdateTimerUI()
     {
-        SetupObjective();
+        if (timerText == null) return;
 
-        SetState(GameState.Objective);
-    }
-
-    public void GoToGameplay()
-    {
-        SetState(GameState.Gameplay);
-
-        currentWagon.BeginRecording();
-        currentWagon.StartGameplay(startingStation);
-
-        NextObjective();
+        int minutes = Mathf.FloorToInt(remainingTime / 60);
+        int seconds = Mathf.FloorToInt(remainingTime % 60);
+        timerText.text = $"{minutes:00}:{seconds:00}";
     }
 }

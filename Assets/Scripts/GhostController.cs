@@ -31,4 +31,17 @@ public class GhostController : MonoBehaviour
             currentIndex = 0;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GameManager.Instance.SetState(GameState.Lose);
+            GhostManager.Instance.DestroyGhost(gameObject);
+        }
+        else if (other.CompareTag("Ghost"))
+        {
+            GhostManager.Instance.DestroyGhost(gameObject);
+        }
+    }
 }
