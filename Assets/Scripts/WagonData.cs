@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class WagonPathing
+public class WagonData
 {
     public List<PathPoint> paths = new();
 

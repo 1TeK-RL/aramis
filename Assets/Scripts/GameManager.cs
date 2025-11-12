@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
 
             case GameState.Win:
                 StopTimer();
-                WagonPathing resultWin = currentWagon.StopRecording();
+                WagonData resultWin = currentWagon.StopRecording();
                 GhostManager.Instance.SpawnGhost(resultWin);
                 break;
 

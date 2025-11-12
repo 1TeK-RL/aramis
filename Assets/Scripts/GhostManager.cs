@@ -23,7 +23,7 @@ public class GhostManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SpawnGhost(WagonPathing data)
+    public void SpawnGhost(WagonData data)
     {
         if (ghosts.Count >= maxGhosts)
         {
@@ -35,7 +35,7 @@ public class GhostManager : MonoBehaviour
         }
 
         GameObject ghost = Instantiate(ghostPrefab, ghostParent);
-        ghost.GetComponent<GhostController>().Play(data);
+        ghost.GetComponent<GhostController>().Create(data);
         ghosts.Enqueue(ghost);
     }
 

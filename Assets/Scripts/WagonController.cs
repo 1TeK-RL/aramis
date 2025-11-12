@@ -20,7 +20,7 @@ public class WagonController : MonoBehaviour
     private Rigidbody rb;
     private BoxCollider boxCollider;
 
-    private WagonPathing recordingData;
+    private WagonData recordingData;
     private float elapsedTime = 0f;
     private bool isRecording = false;
 
@@ -125,7 +125,7 @@ public class WagonController : MonoBehaviour
             {
                 elapsedTime += Time.fixedDeltaTime;
 
-                recordingData.paths.Add(new WagonPathing.PathPoint
+                recordingData.paths.Add(new WagonData.PathPoint
                 {
                     position = transform.position,
                     rotation = transform.rotation,
@@ -160,12 +160,12 @@ public class WagonController : MonoBehaviour
 
     public void BeginRecording()
     {
-        recordingData = new WagonPathing();
+        recordingData = new WagonData();
         elapsedTime = 0;
         isRecording = true;
     }
 
-    public WagonPathing StopRecording()
+    public WagonData StopRecording()
     {
         boxCollider.enabled = false;
         gameObject.SetActive(false);
