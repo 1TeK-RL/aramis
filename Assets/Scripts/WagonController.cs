@@ -47,6 +47,8 @@ public class WagonController : MonoBehaviour
         SetPosition(startStation.GetDockPosition());
     }
 
+    private bool justPlaced = false;
+
     private void SetPosition(Vector3 startPos)
     {
         if (currentSpline == null || splineContainer == null) return;
@@ -56,72 +58,78 @@ public class WagonController : MonoBehaviour
         Vector3 startWorldPos = startPos;
         rb.position = startWorldPos;
 
+        // Convertir en local par rapport au container
         Vector3 localPos = splineContainer.transform.InverseTransformPoint(startWorldPos);
 
+        // Trouver le point le plus proche sur la spline locale
         SplineUtility.GetNearestPoint(currentSpline, localPos, out float3 nearestPoint, out float nearestT);
 
+        // Positionner sur le rail en world space
         Vector3 newWorldPos = splineContainer.transform.TransformPoint(nearestPoint);
+        transform.position = newWorldPos;
 
-        Vector3 worldTangent = splineContainer.transform.TransformDirection(currentSpline.EvaluateTangent(nearestT)).normalized;
-        Quaternion newRot = Quaternion.LookRotation(worldTangent, Vector3.up);
+        // Orientation selon la spline
+        Vector3 forwardVector = splineContainer.transform.TransformDirection(Vector3.Normalize(currentSpline.EvaluateTangent(nearestT)));
+        Vector3 upVector = splineContainer.transform.TransformDirection(currentSpline.EvaluateUpVector(nearestT));
 
-        rb.position = newWorldPos;
-        rb.rotation = newRot;
+        Quaternion railRotation = Quaternion.LookRotation(forwardVector, upVector);
+        Quaternion axisRemap = Quaternion.Euler(-90f, 0f, 0f);
+        transform.rotation = railRotation * axisRemap;
 
         distanceOnSpline = nearestT * currentSpline.GetLength();
 
         isPlaced = true;
+        justPlaced = true; // ⬅️ On indique qu’on vient de placer le wagon
     }
 
     private void FixedUpdate()
     {
-        if (isPlaced)
+        if (!isPlaced) return;
+
+        // ⬅️ Ignore la première frame après placement pour éviter le "snap"
+        //if (justPlaced)
+        //{
+        //    justPlaced = false;
+        //    return;
+        //}
+
+        float targetSpeed = speedSlider.value * maxSpeed;
+        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, acceleration * Time.fixedDeltaTime);
+
+        var native = new NativeSpline(currentSpline);
+
+        // Récupération du point le plus proche sur la spline (en local)
+        Vector3 localPos = splineContainer.transform.InverseTransformPoint(transform.position);
+        SplineUtility.GetNearestPoint(native, localPos, out float3 nearest, out float t);
+
+        // Position sur la spline (en world)
+        Vector3 worldPos = splineContainer.transform.TransformPoint(nearest);
+        transform.position = worldPos;
+
+        // Orientation selon la spline (convertie en world)
+        Vector3 forwardVector = splineContainer.transform.TransformDirection(Vector3.Normalize(native.EvaluateTangent(t)));
+        Vector3 upVector = splineContainer.transform.TransformDirection(native.EvaluateUpVector(t));
+
+        Quaternion railRotation = Quaternion.LookRotation(forwardVector, upVector);
+        Quaternion axisRemap = Quaternion.Euler(-90f, 0f, 0f);
+        transform.rotation = railRotation * axisRemap;
+
+        // Vitesse alignée à la tangente du rail
+        rb.linearVelocity = forwardVector * currentSpeed;
+
+        // Enregistrement du mouvement
+        if (recordingData != null && IsRecording)
         {
-            if (currentSpline == null || splineContainer == null || rb == null) return;
-
-            float targetSpeed = speedSlider.value * maxSpeed;
-
-            currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, acceleration * Time.fixedDeltaTime);
-
-            Vector3 worldPos = rb.position;
-            Vector3 localPos = splineContainer.transform.InverseTransformPoint(worldPos);
-
-            SplineUtility.GetNearestPoint(currentSpline, localPos, out float3 nearestPoint, out float nearestT);
-
-            float splineLength = currentSpline.GetLength();
-            distanceOnSpline = nearestT * splineLength;
-            distanceOnSpline += currentSpeed * Time.fixedDeltaTime;
-
-            if (distanceOnSpline > splineLength)
+            elapsedTime += Time.fixedDeltaTime;
+            recordingData.paths.Add(new WagonPathing.PathPoint
             {
-                distanceOnSpline %= splineLength;
-            }
-
-            float normalizedDistance = distanceOnSpline / splineLength;
-
-            float3 newLocalPos = currentSpline.EvaluatePosition(normalizedDistance);
-            float3 localTangent = currentSpline.EvaluateTangent(normalizedDistance);
-
-            Vector3 newWorldPos = splineContainer.transform.TransformPoint(newLocalPos);
-            Vector3 worldTangent = splineContainer.transform.TransformDirection(localTangent).normalized;
-
-            Quaternion newRot = Quaternion.LookRotation(worldTangent, Vector3.up);
-
-            rb.MovePosition(newWorldPos);
-            rb.MoveRotation(newRot);
-
-            if (recordingData != null && IsRecording == true)
-            {
-                elapsedTime += Time.fixedDeltaTime;
-                recordingData.paths.Add(new WagonPathing.PathPoint
-                {
-                    position = transform.position,
-                    rotation = transform.rotation,
-                    elapsedTime = elapsedTime
-                });
-            }
+                position = transform.position,
+                rotation = transform.rotation,
+                elapsedTime = elapsedTime
+            });
         }
     }
+
 
     public void HitJunction(List<int> rails)
     {
