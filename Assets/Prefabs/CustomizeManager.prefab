@@ -47,7 +47,8 @@ MonoBehaviour:
   wagonMeshes:
   - {fileID: 0}
   - {fileID: 0}
-  currentMaterial:
+  startMaterial:
     PrimaryMaterial: {fileID: 2100000, guid: afb214743dce5dc4fb7792da4f2abb33, type: 2}
     SecondaryMaterial: {fileID: 2100000, guid: 572baa6446f98b142a26941130d182ca, type: 2}
+  inputField: {fileID: 0}
   currentText: 

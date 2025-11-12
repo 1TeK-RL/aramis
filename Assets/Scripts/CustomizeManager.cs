@@ -8,11 +8,14 @@ public class CustomizeManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private List<WagonCustomize> wagonMeshes;
-    [SerializeField] private WagonMaterial currentMaterial;
+    [SerializeField] private WagonMaterial startMaterial;
+    [SerializeField] private TMP_InputField inputField;
+    private WagonMaterial currentMaterial;
 
     private WagonCustomize currentWagonMesh;
     public string currentText;
     private int currentWagonIndex = 0;
+    
 
     private void Awake()
     {
@@ -30,6 +33,7 @@ public class CustomizeManager : MonoBehaviour
     public void Start()
     {
         currentWagonMesh = wagonMeshes[0];
+        currentMaterial = startMaterial;
         ChangeWagon(currentWagonIndex);
         SetMaterial(currentMaterial);
     }
@@ -66,6 +70,18 @@ public class CustomizeManager : MonoBehaviour
     public int GetCurrentWagonIndex()
     {
         return currentWagonIndex;
+    }
+
+
+    public void ResetCustomize()
+    {
+        currentMaterial = startMaterial;
+        currentText = string.Empty;
+        currentWagonIndex = 0;
+        ChangeWagon(currentWagonIndex);
+        SetMaterial(currentMaterial);
+        UpdateTexts(currentText);
+        inputField.text = "";
     }
 }
 
