@@ -44,6 +44,19 @@ public class WagonController : MonoBehaviour
         boxCollider.enabled = false;
     }
 
+    public void ResetWagon()
+    {
+        isPlaced = false;
+        boxCollider.enabled = false;
+        recordingData = null;
+        elapsedTime = 0f;
+        isRecording = false;
+        currentSpeed = 0f;
+        speedSlider.value = 0f;
+        transform.position = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
+    }
+
     public void SetupGameplay(Station startStation)
     {
         currentSpline = splineContainer.Splines[startStation.GetSplineID()];
@@ -164,14 +177,15 @@ public class WagonController : MonoBehaviour
     public WagonData StopRecording()
     {
         boxCollider.enabled = false;
-        gameObject.SetActive(false);
 
         isRecording = false;
         isPlaced = false;
 
         textDirection.text = "Left";
         isLeft = true;
-
+        
         return recordingData;
     }
+
+    
 }

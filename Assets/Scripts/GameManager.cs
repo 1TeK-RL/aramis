@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.Customize:
+                CustomizeManager.Instance.ResetCustomize();
                 break;
 
             case GameState.Objective:
@@ -164,12 +165,14 @@ public class GameManager : MonoBehaviour
                 resultWin.wagonMeshIndex = CustomizeManager.Instance.GetCurrentWagonIndex();
 
                 GhostManager.Instance.SpawnGhost(resultWin);
-                GhostManager.Instance.LaunchGhosts();   
+                GhostManager.Instance.LaunchGhosts();  
+                currentWagon.ResetWagon();
                 break;
 
             case GameState.Lose:
                 StopTimer();
                 _ = currentWagon.StopRecording();
+                currentWagon.ResetWagon();
                 break;
         }
     }
