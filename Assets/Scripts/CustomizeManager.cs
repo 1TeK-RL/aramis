@@ -40,6 +40,7 @@ public class CustomizeManager : MonoBehaviour
 
     public void ChangeWagon(int WagonMeshIndex)
     {
+        currentWagonIndex = WagonMeshIndex;
         currentWagonMesh.gameObject.SetActive(false);
         currentWagonMesh = wagonMeshes[WagonMeshIndex];
         currentWagonMesh.SetMaterial(currentMaterial);

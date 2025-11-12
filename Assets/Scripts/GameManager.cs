@@ -13,18 +13,11 @@ public enum GameState
     Lose
 }
 
-public enum NbPlayers 
-{
-    One,
-    Two
-}
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
     public GameState CurrentState { get; private set; }
-    public NbPlayers CurrentNbPlayers { get; private set; }
 
     public event System.Action<GameState> OnGameStateChanged;
 
@@ -139,6 +132,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ReactiveStartingStations(Station station)
+    {
+        usedStartingStations.Remove(station);
+    }
+
     public void SetState(GameState newState)
     {
         CurrentState = newState;
@@ -147,15 +145,15 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Title:
-                break;
-
-            case GameState.Customize:
                 CustomizeManager.Instance.ResetCustomize();
                 break;
 
+            case GameState.Customize:
+                break;
+
             case GameState.Objective:
+                GhostManager.Instance.DestroyLastGhostIfFull();
                 SetupObjective();
-                currentWagon.gameObject.SetActive(true);
                 currentWagon.SetupGameplay(startingStation);
                 break;
 
@@ -164,18 +162,20 @@ public class GameManager : MonoBehaviour
                 currentWagon.StartGameplay();
                 currentWagon.BeginRecording();
                 NextObjective();
+                GhostManager.Instance.LaunchGhosts();
                 break;
 
             case GameState.Win:
                 StopTimer();
                 WagonData resultWin = currentWagon.StopRecording();
 
+                resultWin.startingStation = startingStation;
+
                 resultWin.wagonName = CustomizeManager.Instance.currentText;
                 resultWin.wagonMaterial = CustomizeManager.Instance.GetCurrentMaterial();
                 resultWin.wagonMeshIndex = CustomizeManager.Instance.GetCurrentWagonIndex();
 
                 GhostManager.Instance.SpawnGhost(resultWin);
-                GhostManager.Instance.LaunchGhosts();  
                 currentWagon.ResetWagon();
                 break;
 
@@ -188,8 +188,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void GoToTitle() => SetState(GameState.Title);
-    public void GoToCustomizeWithOnePlayer() {CurrentNbPlayers = NbPlayers.One; SetState(GameState.Customize);}
-    public void GoToCustomizeWithTwoPlayers() {CurrentNbPlayers = NbPlayers.Two; SetState(GameState.Customize);}
+    public void GoToCustomize() => SetState(GameState.Customize);
     public void GoToObjective() => SetState(GameState.Objective);
     public void GoToGameplay() => SetState(GameState.Gameplay);
 

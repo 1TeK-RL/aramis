@@ -9,7 +9,7 @@ public class WagonData
     public WagonMaterial wagonMaterial;
     public int wagonMeshIndex;
 
-    public int startingStationIndex;
+    public Station startingStation;
     public List<PathPoint> paths = new();
 
     [Serializable]

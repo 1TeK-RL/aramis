@@ -15,6 +15,9 @@ public class GhostController : MonoBehaviour
 
     public void Play()
     {
+        elapsedTime = 0f;
+        currentIndex = 0;
+        GetComponent<Renderer>().enabled = true;
         isPlaying = true;
     }
 
@@ -39,16 +42,22 @@ public class GhostController : MonoBehaviour
                 elapsedTime = 0f;
                 currentIndex = 0;
                 isPlaying = false;
+                GetComponent<Renderer>().enabled = false;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && isPlaying == true)
         {
             GameManager.Instance.SetState(GameState.Lose);
             GhostManager.Instance.DestroyGhost(gameObject);
         }
+    }
+
+    public Station GetStartingStation()
+    {
+        return data.startingStation;
     }
 }

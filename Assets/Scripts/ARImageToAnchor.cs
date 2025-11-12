@@ -87,6 +87,5 @@ public class ARImageToAnchor : MonoBehaviour
         UIManager.Instance.SetCalibrationState(CalibrationState.NotCalibrated);
 
         trackedImageManager.enabled = true;
-        Debug.Log("[ImageToAnchor] Reset - image tracking re-enabled.");
     }
 }

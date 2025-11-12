@@ -81,17 +81,13 @@ public class WagonController : MonoBehaviour
 
         transform.position = startWorldPos;
 
-        // Convertir en local par rapport au container
         Vector3 localPos = splineContainer.transform.InverseTransformPoint(startWorldPos);
 
-        // Trouver le point le plus proche sur la spline locale
         SplineUtility.GetNearestPoint(currentSpline, localPos, out float3 nearestPoint, out float nearestT);
 
-        // Positionner sur le rail en world space
         Vector3 newWorldPos = splineContainer.transform.TransformPoint(nearestPoint);
         transform.position = newWorldPos;
 
-        // Orientation selon la spline
         Vector3 forwardVector = splineContainer.transform.TransformDirection(Vector3.Normalize(currentSpline.EvaluateTangent(nearestT)));
         Vector3 upVector = splineContainer.transform.TransformDirection(currentSpline.EvaluateUpVector(nearestT));
 
@@ -111,15 +107,12 @@ public class WagonController : MonoBehaviour
 
         var native = new NativeSpline(currentSpline);
 
-        // Récupération du point le plus proche sur la spline (en local)
         Vector3 localPos = splineContainer.transform.InverseTransformPoint(transform.position);
         SplineUtility.GetNearestPoint(native, localPos, out float3 nearest, out float t);
 
-        // Position sur la spline (en world)
         Vector3 worldPos = splineContainer.transform.TransformPoint(nearest);
         transform.position = worldPos;
 
-        // Orientation selon la spline (convertie en world)
         Vector3 forwardVector = splineContainer.transform.TransformDirection(Vector3.Normalize(native.EvaluateTangent(t)));
         Vector3 upVector = splineContainer.transform.TransformDirection(native.EvaluateUpVector(t));
 
@@ -127,10 +120,8 @@ public class WagonController : MonoBehaviour
         Quaternion axisRemap = Quaternion.Euler(0f, 0f, 0f);
         transform.rotation = railRotation * axisRemap;
 
-        // Vitesse alignée à la tangente du rail
         rb.linearVelocity = forwardVector * currentSpeed;
 
-        // Enregistrement du mouvement
         if (recordingData != null && isRecording)
         {
             elapsedTime += Time.fixedDeltaTime;
@@ -186,6 +177,4 @@ public class WagonController : MonoBehaviour
         
         return recordingData;
     }
-
-    
 }

@@ -14,6 +14,7 @@ public class GhostCustomize : MonoBehaviour
         wagonMeshes[WagonMeshIndex].SetMaterial(currentMaterial);
         wagonMeshes[WagonMeshIndex].UpdateTexts(currentText);
     }
+
     public void ChangeWagon(int WagonMeshIndex)
     {
         for (int i = 0; i < wagonMeshes.Count; i++)
@@ -28,6 +29,7 @@ public class GhostCustomize : MonoBehaviour
             }
         }
     }
+
     public void SetMaterial(WagonMaterial materials)
     {
         currentMaterial = materials;

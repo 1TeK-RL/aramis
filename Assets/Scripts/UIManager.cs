@@ -67,20 +67,5 @@ public class UIManager : MonoBehaviour
     public void SetCalibrationState(CalibrationState newState)
     {
         CurrentCalibrationState = newState;
-
-        switch (newState)
-        {
-            case CalibrationState.NotCalibrated:
-                gameplay_Canvas.GetComponent<CanvasGameplay>().changeColor(Color.red);
-                break;
-
-            case CalibrationState.Calibrating:
-                gameplay_Canvas.GetComponent<CanvasGameplay>().changeColor(Color.yellow);
-                break;
-
-            case CalibrationState.Calibrated:
-                gameplay_Canvas.GetComponent<CanvasGameplay>().changeColor(Color.green);
-                break;
-        }
     }
 }

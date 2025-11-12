@@ -64,6 +64,19 @@ public class GhostManager : MonoBehaviour
         }
     }
 
+    public void DestroyLastGhostIfFull()
+    {
+        if (ghosts.Count == 0) return;
+        if (ghosts.Count < maxGhosts) return;
+
+        GameObject ghost = ghosts.Dequeue();
+        if (ghost != null)
+        {
+            GameManager.Instance.ReactiveStartingStations(ghost.GetComponent<GhostController>().GetStartingStation());
+            Destroy(ghost);
+        }
+    }
+
     public void DestroyGhost(GameObject ghost)
     {
         if (ghost == null) return;
