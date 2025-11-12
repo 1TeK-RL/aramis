@@ -57,13 +57,22 @@ public class CustomizeManager : MonoBehaviour
         currentText = newText;
         currentWagonMesh.UpdateTexts(currentText);
     }
+
+    public WagonMaterial GetCurrentMaterial()
+    {
+        return currentMaterial;
+    }
+
+    public int GetCurrentWagonIndex()
+    {
+        return currentWagonIndex;
+    }
 }
+
 [System.Serializable]
 public class WagonMaterial
 {
-    
     public Material PrimaryMaterial;
-    
     public Material SecondaryMaterial;
 }
 

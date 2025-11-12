@@ -1,8 +1,5 @@
-using NUnit.Framework;
-using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
-using Palmmedia.ReportGenerator.Core;
 
 public class GhostCustomize : MonoBehaviour
 {

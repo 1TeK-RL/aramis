@@ -158,7 +158,13 @@ public class GameManager : MonoBehaviour
             case GameState.Win:
                 StopTimer();
                 WagonData resultWin = currentWagon.StopRecording();
+
+                resultWin.wagonName = CustomizeManager.Instance.currentText;
+                resultWin.wagonMaterial = CustomizeManager.Instance.GetCurrentMaterial();
+                resultWin.wagonMeshIndex = CustomizeManager.Instance.GetCurrentWagonIndex();
+
                 GhostManager.Instance.SpawnGhost(resultWin);
+                GhostManager.Instance.LaunchGhosts();   
                 break;
 
             case GameState.Lose:

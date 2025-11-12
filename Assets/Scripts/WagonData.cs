@@ -5,6 +5,9 @@ using UnityEngine;
 [Serializable]
 public class WagonData
 {
+    public string wagonName;
+    public WagonMaterial wagonMaterial;
+    public int wagonMeshIndex;
     public List<PathPoint> paths = new();
 
     [Serializable]

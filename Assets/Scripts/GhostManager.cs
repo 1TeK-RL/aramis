@@ -35,7 +35,15 @@ public class GhostManager : MonoBehaviour
         }
 
         GameObject ghost = Instantiate(ghostPrefab, ghostParent);
+
         ghost.GetComponent<GhostController>().Create(data);
+
+        ghost.GetComponent<GhostCustomize>().SetText(data.wagonName);
+        ghost.GetComponent<GhostCustomize>().SetMaterial(data.wagonMaterial);
+        ghost.GetComponent<GhostCustomize>().SetWagonIndex(data.wagonMeshIndex);
+
+        ghost.GetComponent<GhostCustomize>().SetCustomization();
+
         ghosts.Enqueue(ghost);
     }
 

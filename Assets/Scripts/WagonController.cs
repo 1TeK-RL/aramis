@@ -26,7 +26,6 @@ public class WagonController : MonoBehaviour
     private bool isRecording = false;
 
     private float currentSpeed = 0f;
-    private float distanceOnSpline = 0f;
 
     private bool isPlaced;
     private bool isLeft;
@@ -56,8 +55,6 @@ public class WagonController : MonoBehaviour
     {
         isPlaced = true;
         boxCollider.enabled = true;
-        wagonModelTransform.rotation = Quaternion.Euler(90f, 0f, 0f);
-
     }
 
     private void SetPosition(Vector3 startPos)
@@ -66,7 +63,6 @@ public class WagonController : MonoBehaviour
 
         speedSlider.value = 0f;
         currentSpeed = 0f;
-        distanceOnSpline = 0f;
 
         Vector3 startWorldPos = startPos;
 
@@ -87,10 +83,8 @@ public class WagonController : MonoBehaviour
         Vector3 upVector = splineContainer.transform.TransformDirection(currentSpline.EvaluateUpVector(nearestT));
 
         Quaternion railRotation = Quaternion.LookRotation(forwardVector, upVector);
-        Quaternion axisRemap = Quaternion.Euler(-90f, 0f, 0f);
+        Quaternion axisRemap = Quaternion.Euler(0f, 0f, 0f);
         transform.rotation = railRotation * axisRemap;
-
-        distanceOnSpline = nearestT * currentSpline.GetLength();
 
         isPlaced = true;
     }
@@ -117,7 +111,7 @@ public class WagonController : MonoBehaviour
         Vector3 upVector = splineContainer.transform.TransformDirection(native.EvaluateUpVector(t));
 
         Quaternion railRotation = Quaternion.LookRotation(forwardVector, upVector);
-        Quaternion axisRemap = Quaternion.Euler(-90f, 0f, 0f);
+        Quaternion axisRemap = Quaternion.Euler(0f, 0f, 0f);
         transform.rotation = railRotation * axisRemap;
 
         // Vitesse alignée à la tangente du rail
