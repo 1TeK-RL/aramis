@@ -11,6 +11,7 @@ public class WagonController : MonoBehaviour
     [SerializeField] private Slider speedSlider;
     [SerializeField] private SplineContainer splineContainer;
     [SerializeField] private TextMeshProUGUI textDirection;
+    [SerializeField] private Transform wagonModelTransform;
 
     [Header("Settings")]
     [SerializeField] private float maxSpeed = 20f;
@@ -48,12 +49,15 @@ public class WagonController : MonoBehaviour
     {
         currentSpline = splineContainer.Splines[startStation.GetSplineID()];
         SetPosition(startStation.GetDockPosition());
+        
     }
 
     public void StartGameplay()
     {
         isPlaced = true;
         boxCollider.enabled = true;
+        wagonModelTransform.rotation = Quaternion.Euler(90f, 0f, 0f);
+
     }
 
     private void SetPosition(Vector3 startPos)
@@ -89,19 +93,12 @@ public class WagonController : MonoBehaviour
         distanceOnSpline = nearestT * currentSpline.GetLength();
 
         isPlaced = true;
-        justPlaced = true; // ⬅️ On indique qu’on vient de placer le wagon
     }
 
     private void FixedUpdate()
     {
         if (!isPlaced) return;
 
-        // ⬅️ Ignore la première frame après placement pour éviter le "snap"
-        //if (justPlaced)
-        //{
-        //    justPlaced = false;
-        //    return;
-        //}
 
         float targetSpeed = speedSlider.value * maxSpeed;
         currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, acceleration * Time.fixedDeltaTime);
@@ -128,10 +125,10 @@ public class WagonController : MonoBehaviour
         rb.linearVelocity = forwardVector * currentSpeed;
 
         // Enregistrement du mouvement
-        if (recordingData != null && IsRecording)
+        if (recordingData != null && isRecording)
         {
             elapsedTime += Time.fixedDeltaTime;
-            recordingData.paths.Add(new WagonPathing.PathPoint
+            recordingData.paths.Add(new WagonData.PathPoint
             {
                 position = transform.position,
                 rotation = transform.rotation,

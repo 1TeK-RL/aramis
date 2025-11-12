@@ -12,6 +12,7 @@ public class CustomizeManager : MonoBehaviour
 
     private WagonCustomize currentWagonMesh;
     public string currentText;
+    private int currentWagonIndex = 0;
 
     private void Awake()
     {
@@ -29,14 +30,14 @@ public class CustomizeManager : MonoBehaviour
     public void Start()
     {
         currentWagonMesh = wagonMeshes[0];
-        ChangeWagon(currentWagonMesh);
+        ChangeWagon(currentWagonIndex);
         SetMaterial(currentMaterial);
     }
 
-    public void ChangeWagon(WagonCustomize wagon)
+    public void ChangeWagon(int WagonMeshIndex)
     {
         currentWagonMesh.gameObject.SetActive(false);
-        currentWagonMesh = wagon;
+        currentWagonMesh = wagonMeshes[WagonMeshIndex];
         currentWagonMesh.SetMaterial(currentMaterial);
         currentWagonMesh.UpdateTexts(currentText);
         currentWagonMesh.gameObject.SetActive(true);
