@@ -7,7 +7,8 @@ public class GhostManager : MonoBehaviour
 
     [SerializeField] private GameObject ghostPrefab;
     [SerializeField] private Transform ghostParent;
-    [SerializeField] private int maxGhosts = 10;
+
+    private int maxGhosts;
 
     private readonly Queue<GameObject> ghosts = new();
 
@@ -21,6 +22,11 @@ public class GhostManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void SetMaxGhosts(int max)
+    {
+        maxGhosts = max;
     }
 
     public void SpawnGhost(WagonData data)

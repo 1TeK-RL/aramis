@@ -47,6 +47,7 @@ MonoBehaviour:
   wagonMeshes:
   - {fileID: 0}
   - {fileID: 0}
-  currentColors:
-  - {r: 0.90588236, g: 0.8862745, b: 0, a: 1}
-  - {r: 0, g: 0, b: 0, a: 1}
+  currentMaterial:
+    PrimaryMaterial: {fileID: 2100000, guid: afb214743dce5dc4fb7792da4f2abb33, type: 2}
+    SecondaryMaterial: {fileID: 2100000, guid: 572baa6446f98b142a26941130d182ca, type: 2}
+  currentText: 

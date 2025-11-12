@@ -1835,6 +1835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Junction_7
       objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
+      objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
       value: 
@@ -1991,6 +1995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Junction_3
       objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
+      objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
       value: 
@@ -2143,6 +2151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Junction_5
       objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
+      objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
       value: 
@@ -2216,6 +2228,10 @@ PrefabInstance:
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
       value: Junction_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2298,6 +2314,10 @@ PrefabInstance:
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
       value: Junction_9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2459,6 +2479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Junction_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
+      objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
       value: 
@@ -2537,6 +2561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Junction_6
       objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
+      objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
       value: 
@@ -2610,6 +2638,10 @@ PrefabInstance:
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
       value: Junction_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
@@ -2693,6 +2725,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Junction_2
       objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
+      objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail
       value: 
@@ -2774,6 +2810,10 @@ PrefabInstance:
     - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: m_Name
       value: Junction_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291555860496446028, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
+      propertyPath: m_TagString
+      value: Junction
       objectReference: {fileID: 0}
     - target: {fileID: 8594079368232934501, guid: dc8f9c1b35c3c6b4c9bf5ecb486d3fa8, type: 3}
       propertyPath: rail

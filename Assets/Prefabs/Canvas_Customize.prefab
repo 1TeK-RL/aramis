@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171a482eb014f2c45bf77293830dced2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WagonMeshIndex: 0
+  WagonMeshIndex: 1
 --- !u!1 &2984848906835293676
 GameObject:
   m_ObjectHideFlags: 0

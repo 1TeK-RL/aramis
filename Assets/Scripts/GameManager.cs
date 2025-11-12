@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float maxGameTime = 120f;
 
     private List<Station> allStations = new List<Station>();
+    private List<Station> usedStartingStations = new List<Station>();
 
     private List<Station> currentRoute;
     private Station startingStation;
@@ -74,6 +75,8 @@ public class GameManager : MonoBehaviour
                 allStations.Add(station);
             }
         }
+
+        GhostManager.Instance.SetMaxGhosts(allStations.Count);
     }
 
     private void SetupObjective()
@@ -81,7 +84,14 @@ public class GameManager : MonoBehaviour
         objectiveCount = 0;
         currentRoute = new List<Station>();
 
-        startingStation = allStations[Random.Range(0, allStations.Count)];
+        List<Station> remainingStations = new List<Station>(allStations);
+        foreach (Station used in usedStartingStations)
+        {
+            remainingStations.Remove(used);
+        }
+
+        startingStation = remainingStations[Random.Range(0, remainingStations.Count)];
+        usedStartingStations.Add(startingStation);
         currentRoute.Add(startingStation);
 
         List<Station> availableStations = new List<Station>(allStations);

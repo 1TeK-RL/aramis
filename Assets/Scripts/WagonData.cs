@@ -8,6 +8,8 @@ public class WagonData
     public string wagonName;
     public WagonMaterial wagonMaterial;
     public int wagonMeshIndex;
+
+    public int startingStationIndex;
     public List<PathPoint> paths = new();
 
     [Serializable]
