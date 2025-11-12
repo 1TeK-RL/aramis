@@ -39,6 +39,17 @@ public class GhostManager : MonoBehaviour
         ghosts.Enqueue(ghost);
     }
 
+    public void LaunchGhosts()
+    {
+        foreach (var ghost in ghosts)
+        {
+            if (ghost != null)
+            {
+                ghost.GetComponent<GhostController>().Play();
+            }
+        }
+    }
+
     public void DestroyGhost(GameObject ghost)
     {
         if (ghost == null) return;

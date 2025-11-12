@@ -20,8 +20,8 @@ public class GhostController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (isPlaying)
-        //{
+        if (isPlaying)
+        {
             if (data == null || data.paths.Count == 0) return;
 
             elapsedTime += Time.fixedDeltaTime;
@@ -38,8 +38,9 @@ public class GhostController : MonoBehaviour
             {
                 elapsedTime = 0f;
                 currentIndex = 0;
+                isPlaying = false;
             }
-        //}
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,10 +48,6 @@ public class GhostController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager.Instance.SetState(GameState.Lose);
-            GhostManager.Instance.DestroyGhost(gameObject);
-        }
-        else if (other.CompareTag("Ghost"))
-        {
             GhostManager.Instance.DestroyGhost(gameObject);
         }
     }
