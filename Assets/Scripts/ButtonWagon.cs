@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ButtonWagon : MonoBehaviour
 {
-    [SerializeField] private WagonCustomize wagon;
+    [SerializeField] private int WagonMeshIndex;
 
     public void ChangeWagon()
     {
-        CustomizeManager.Instance.ChangeWagon(wagon);
+        CustomizeManager.Instance.ChangeWagon(WagonMeshIndex);
     }
 }

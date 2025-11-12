@@ -2492,7 +2492,7 @@ MonoBehaviour:
   currentWagon: {fileID: 6842650739536278307}
   stationsParent: {fileID: 1593191526}
   objectiveText: {fileID: 499524104}
-  timerText: {fileID: 1046223922}
+  timerText: {fileID: 0}
   objectiveMax: 1
   maxGameTime: 120
 --- !u!4 &1140058398
@@ -2510,6 +2510,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1152780374 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4825539712644478105, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
+  m_PrefabInstance: {fileID: 6842650739536278304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1152825555
 GameObject:
   m_ObjectHideFlags: 0
@@ -4846,6 +4851,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!4 &1988564051 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7626281772683485587, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
+  m_PrefabInstance: {fileID: 6842650739536278304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2022766181
 GameObject:
   m_ObjectHideFlags: 0
@@ -5121,6 +5131,10 @@ PrefabInstance:
       propertyPath: splineContainer
       value: 
       objectReference: {fileID: 1593191525}
+    - target: {fileID: 3079663820268728769, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
+      propertyPath: wagonModelTransform
+      value: 
+      objectReference: {fileID: 1988564051}
     - target: {fileID: 3233955753774213086, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
       propertyPath: m_text
       value: ALEX

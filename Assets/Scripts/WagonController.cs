@@ -11,6 +11,7 @@ public class WagonController : MonoBehaviour
     [SerializeField] private Slider speedSlider;
     [SerializeField] private SplineContainer splineContainer;
     [SerializeField] private TextMeshProUGUI textDirection;
+    [SerializeField] private Transform wagonModelTransform;
 
     [Header("Settings")]
     [SerializeField] private float maxSpeed = 20f;
@@ -48,12 +49,15 @@ public class WagonController : MonoBehaviour
     {
         currentSpline = splineContainer.Splines[startStation.GetSplineID()];
         SetPosition(startStation.GetDockPosition());
+        
     }
 
     public void StartGameplay()
     {
         isPlaced = true;
         boxCollider.enabled = true;
+        wagonModelTransform.rotation = Quaternion.Euler(90f, 0f, 0f);
+
     }
 
     private void SetPosition(Vector3 startPos)
