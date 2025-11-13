@@ -144,7 +144,7 @@ public class WagonController : MonoBehaviour
 
     public void StopAtStation()
     {
-        StartCoroutine(SlowDownRoutine(0.5f)); // 0.5 secondes pour s’arrêter
+        StartCoroutine(SlowDownRoutine(0.5f));
     }
 
     private IEnumerator SlowDownRoutine(float duration)
@@ -158,14 +158,12 @@ public class WagonController : MonoBehaviour
             time += Time.deltaTime;
             float t = time / duration;
 
-            // Interpolation douce
             currentSpeed = Mathf.Lerp(startSpeed, 0f, t);
             speedSlider.value = Mathf.Lerp(startSlider, 0f, t);
 
             yield return null;
         }
 
-        // Arrêt complet
         currentSpeed = 0f;
         speedSlider.value = 0f;
         rb.linearVelocity = Vector3.zero;
@@ -213,5 +211,29 @@ public class WagonController : MonoBehaviour
         isLeft = true;
 
         return recordingData;
+    }
+
+    public void EnableOutline()
+    {
+        if (CustomizeManager.Instance.GetCurrentWagonIndex() == 0)
+        {
+            transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Outline>().enabled = true;
+        }
+        else
+        {
+            transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Outline>().enabled = true;
+        }
+    }
+
+    public void DisableOutline()
+    {
+        if (CustomizeManager.Instance.GetCurrentWagonIndex() == 0)
+        {
+            transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Outline>().enabled = false;
+        }
+        else
+        {
+            transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Outline>().enabled = false;
+        }
     }
 }

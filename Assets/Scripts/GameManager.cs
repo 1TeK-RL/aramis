@@ -145,9 +145,13 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Title:
                 CustomizeManager.Instance.ResetCustomize();
+                currentWagon.DisableOutline();
+                currentWagon.ResetWagon();
                 break;
 
             case GameState.Customize:
+                currentWagon.DisableOutline();
+                currentWagon.ResetWagon();
                 break;
 
             case GameState.Objective:
@@ -157,6 +161,7 @@ public class GameManager : MonoBehaviour
                 SetupObjective();
 
                 currentWagon.SetupGameplay(startingStation);
+                currentWagon.EnableOutline();
                 break;
 
             case GameState.Gameplay:
@@ -183,6 +188,7 @@ public class GameManager : MonoBehaviour
 
                 GhostManager.Instance.CreateGhost(resultWin);
 
+                currentWagon.DisableOutline();
                 currentWagon.ResetWagon();
                 break;
 
@@ -191,6 +197,7 @@ public class GameManager : MonoBehaviour
 
                 _ = currentWagon.StopRecording();
 
+                currentWagon.DisableOutline();
                 currentWagon.ResetWagon();
                 break;
         }
