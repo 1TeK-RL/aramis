@@ -1,9 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CalibrationState
 {
     NotCalibrated,
-    Calibrating,
     Calibrated
 }
 
@@ -11,12 +11,27 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
+    [Header("Canvases")]
     [SerializeField] GameObject title_Canvas;
     [SerializeField] GameObject customize_Canvas;
     [SerializeField] GameObject objective_Canvas;
     [SerializeField] GameObject gameplay_Canvas;
     [SerializeField] GameObject win_Canvas;
     [SerializeField] GameObject lose_Canvas;
+
+    [Header("Objective Icons")]
+    [SerializeField] Sprite[] ObjectiveIcons;
+
+    [Header("Objective UI")]
+    [SerializeField] Image StartingObjIcon;
+    [SerializeField] Image NewObjIcon;
+    [SerializeField] Image Step;
+
+    [Header("Calibration Buttons")]
+    [SerializeField] Image CalibrationButtonObjective;
+    [SerializeField] Image CalibrationButtonGameplay;
+    [SerializeField] Sprite NotCalibrated;
+    [SerializeField] Sprite Calibrated;
 
     public CalibrationState CurrentCalibrationState { get; set; }
 
@@ -67,5 +82,18 @@ public class UIManager : MonoBehaviour
     public void SetCalibrationState(CalibrationState newState)
     {
         CurrentCalibrationState = newState;
+
+        switch (newState)
+        {
+            case CalibrationState.NotCalibrated:
+                CalibrationButtonObjective.sprite = NotCalibrated;
+                CalibrationButtonGameplay.sprite = NotCalibrated;
+                break;
+
+            case CalibrationState.Calibrated:
+                CalibrationButtonObjective.sprite = Calibrated;
+                CalibrationButtonGameplay.sprite = Calibrated;
+                break;
+        }
     }
 }

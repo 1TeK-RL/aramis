@@ -10,8 +10,9 @@ public class WagonController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Slider speedSlider;
     [SerializeField] private SplineContainer splineContainer;
-    [SerializeField] private TextMeshProUGUI textDirection;
     [SerializeField] private Transform wagonModelTransform;
+    [SerializeField] private GameObject BlueDirection;
+    [SerializeField] private GameObject RedDirection;
 
     [Header("Settings")]
     [SerializeField] private float maxSpeed = 20f;
@@ -34,11 +35,15 @@ public class WagonController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
+
+        for (int i = 0; i < splineContainer.Splines.Count; i++)
+        {
+            SplineUtility.ReverseFlow(splineContainer, i);
+        }
     }
 
     private void Start()
     {
-        textDirection.text = "Left";
         isPlaced = false;
         isLeft = true;
         boxCollider.enabled = false;
@@ -61,13 +66,15 @@ public class WagonController : MonoBehaviour
     {
         currentSpline = splineContainer.Splines[startStation.GetSplineID()];
         SetPosition(startStation.GetDockPosition());
-        
     }
 
     public void StartGameplay()
     {
         isPlaced = true;
         boxCollider.enabled = true;
+        isLeft = true;
+        RedDirection.SetActive(false);
+        BlueDirection.SetActive(true);
     }
 
     private void SetPosition(Vector3 startPos)
@@ -149,12 +156,14 @@ public class WagonController : MonoBehaviour
         if (isLeft)
         {
             isLeft = false;
-            textDirection.text = "Right";
+            RedDirection.SetActive(true);
+            BlueDirection.SetActive(false);
         }
         else
         {
             isLeft = true;
-            textDirection.text = "Left";
+            RedDirection.SetActive(false);
+            BlueDirection.SetActive(true);
         }
     }
 
@@ -172,9 +181,8 @@ public class WagonController : MonoBehaviour
         isRecording = false;
         isPlaced = false;
 
-        textDirection.text = "Left";
         isLeft = true;
-        
+
         return recordingData;
     }
 }
