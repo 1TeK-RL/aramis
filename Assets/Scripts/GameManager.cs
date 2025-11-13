@@ -99,8 +99,6 @@ public class GameManager : MonoBehaviour
         }
 
         currentRoute.Add(startingStation);
-
-        UIManager.Instance.SetStartingStationIcon(startingStation.GetStationID());
     }
 
     private void NextObjective()
@@ -113,7 +111,7 @@ public class GameManager : MonoBehaviour
         }
 
         UIManager.Instance.SetNextStationIcon(nextStation.GetStationID());
-        UIManager.Instance.SetStepIcon(objectiveCount);
+        UIManager.Instance.SetStepIcon(objectiveCount - 1);
     }
 
     public void ArrivedInStation(int stationID)
@@ -153,20 +151,27 @@ public class GameManager : MonoBehaviour
 
             case GameState.Objective:
                 GhostManager.Instance.DestroyLastGhostIfFull();
+                GhostManager.Instance.SpawnGhosts();
+
                 SetupObjective();
+
                 currentWagon.SetupGameplay(startingStation);
                 break;
 
             case GameState.Gameplay:
                 StartTimer();
+
                 currentWagon.StartGameplay();
                 currentWagon.BeginRecording();
+
                 NextObjective();
+
                 GhostManager.Instance.LaunchGhosts();
                 break;
 
             case GameState.Win:
                 StopTimer();
+
                 WagonData resultWin = currentWagon.StopRecording();
 
                 resultWin.startingStation = startingStation;
@@ -175,13 +180,16 @@ public class GameManager : MonoBehaviour
                 resultWin.wagonMaterial = CustomizeManager.Instance.GetCurrentMaterial();
                 resultWin.wagonMeshIndex = CustomizeManager.Instance.GetCurrentWagonIndex();
 
-                GhostManager.Instance.SpawnGhost(resultWin);
+                GhostManager.Instance.CreateGhost(resultWin);
+
                 currentWagon.ResetWagon();
                 break;
 
             case GameState.Lose:
                 StopTimer();
+
                 _ = currentWagon.StopRecording();
+
                 currentWagon.ResetWagon();
                 break;
         }

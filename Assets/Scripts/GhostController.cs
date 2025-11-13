@@ -20,6 +20,11 @@ public class GhostController : MonoBehaviour
         isPlaying = true;
     }
 
+    public void SpawnGhost()
+    {
+        transform.SetPositionAndRotation(data.paths[0].position, data.paths[0].rotation);
+    }
+
     private void FixedUpdate()
     {
         if (isPlaying)
@@ -41,6 +46,7 @@ public class GhostController : MonoBehaviour
                 elapsedTime = 0f;
                 currentIndex = 0;
                 isPlaying = false;
+                gameObject.SetActive(false);
             }
         }
     }

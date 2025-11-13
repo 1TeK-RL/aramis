@@ -78,13 +78,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344664694457348861}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.25018853, y: 0.39784122, z: -0.113712355, w: -0.8753271}
+  m_LocalRotation: {x: 0.23792514, y: -0.3993911, z: 0.108137965, w: 0.8787403}
   m_LocalPosition: {x: 10.06, y: 8.68, z: -8.74}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4259222772843128998}
-  m_LocalEulerAnglesHint: {x: 35, y: -112, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.3, y: -48.884, z: 0}
 --- !u!20 &1345018923783588711
 Camera:
   m_ObjectHideFlags: 0
@@ -363,8 +363,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedSlider: {fileID: 0}
   splineContainer: {fileID: 0}
-  textDirection: {fileID: 0}
   wagonModelTransform: {fileID: 7626281772683485587}
+  BlueDirection: {fileID: 0}
+  RedDirection: {fileID: 0}
   maxSpeed: 0.2
   acceleration: 0.1
 --- !u!1001 &3383504844924253782

@@ -29,7 +29,7 @@ public class GhostManager : MonoBehaviour
         maxGhosts = max;
     }
 
-    public void SpawnGhost(WagonData data)
+    public void CreateGhost(WagonData data)
     {
         if (ghosts.Count >= maxGhosts)
         {
@@ -51,6 +51,18 @@ public class GhostManager : MonoBehaviour
         ghost.GetComponent<GhostCustomize>().SetCustomization();
 
         ghosts.Enqueue(ghost);
+    }
+    
+    public void SpawnGhosts()
+    {
+        foreach (var ghost in ghosts)
+        {
+            if (ghost != null)
+            {
+                ghost.SetActive(true);
+                ghost.GetComponent<GhostController>().SpawnGhost();
+            }
+        }
     }
 
     public void LaunchGhosts()
