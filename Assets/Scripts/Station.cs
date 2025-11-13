@@ -12,6 +12,7 @@ public class Station : MonoBehaviour
         if (wagon != null)
         {
             GameManager.Instance.ArrivedInStation(id);
+            
         }
     }
 

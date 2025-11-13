@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -141,6 +142,34 @@ public class WagonController : MonoBehaviour
         }
     }
 
+    public void StopAtStation()
+    {
+        StartCoroutine(SlowDownRoutine(0.5f)); // 0.5 secondes pour s’arrêter
+    }
+
+    private IEnumerator SlowDownRoutine(float duration)
+    {
+        float startSpeed = currentSpeed;
+        float startSlider = speedSlider.value;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+
+            // Interpolation douce
+            currentSpeed = Mathf.Lerp(startSpeed, 0f, t);
+            speedSlider.value = Mathf.Lerp(startSlider, 0f, t);
+
+            yield return null;
+        }
+
+        // Arrêt complet
+        currentSpeed = 0f;
+        speedSlider.value = 0f;
+        rb.linearVelocity = Vector3.zero;
+    }
 
     public void HitJunction(List<int> rails)
     {

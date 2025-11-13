@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
 
         if (stationID == nextStation.GetStationID())
         {
+            currentWagon.StopAtStation();
             if (nextStation == startingStation && objectiveCount == currentRoute.Count - 1)
             {
                 SetState(GameState.Win);
