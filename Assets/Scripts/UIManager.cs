@@ -22,9 +22,12 @@ public class UIManager : MonoBehaviour
     [Header("Objective Icons")]
     [SerializeField] Sprite[] ObjectiveIcons;
 
+    [Header("Step Icons")]
+    [SerializeField] Sprite[] StepIcons;
+
     [Header("Objective UI")]
     [SerializeField] Image StartingObjIcon;
-    [SerializeField] Image NewObjIcon;
+    [SerializeField] Image NextObjIcon;
     [SerializeField] Image Step;
 
     [Header("Calibration Buttons")]
@@ -95,5 +98,20 @@ public class UIManager : MonoBehaviour
                 CalibrationButtonGameplay.sprite = Calibrated;
                 break;
         }
+    }
+
+    public void SetStartingStationIcon(int stationID)
+    {
+        StartingObjIcon.sprite = ObjectiveIcons[stationID];
+    }
+
+    public void SetNextStationIcon(int stationID)
+    {
+        NextObjIcon.sprite = ObjectiveIcons[stationID];
+    }
+
+    public void SetStepIcon(int stepIndex)
+    {
+        Step.sprite = StepIcons[stepIndex];
     }
 }

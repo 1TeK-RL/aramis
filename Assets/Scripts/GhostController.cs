@@ -41,7 +41,6 @@ public class GhostController : MonoBehaviour
                 elapsedTime = 0f;
                 currentIndex = 0;
                 isPlaying = false;
-                GetComponent<Renderer>().enabled = false;
             }
         }
     }

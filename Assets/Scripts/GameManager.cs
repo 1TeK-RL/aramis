@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private WagonController currentWagon;
     [SerializeField] private GameObject stationsParent;
-    [SerializeField] private TextMeshProUGUI objectiveText;
     [SerializeField] private TextMeshProUGUI timerText;
 
     [Header("Objective Settings")]
@@ -101,7 +100,7 @@ public class GameManager : MonoBehaviour
 
         currentRoute.Add(startingStation);
 
-        objectiveText.text = "Start at : " + startingStation.GetStationID();
+        UIManager.Instance.SetStartingStationIcon(startingStation.GetStationID());
     }
 
     private void NextObjective()
@@ -111,9 +110,10 @@ public class GameManager : MonoBehaviour
         if (objectiveCount < currentRoute.Count)
         {
             nextStation = currentRoute[objectiveCount];
-            string prefix = (objectiveCount == currentRoute.Count - 1) ? "Return to : " : "Go to : ";
-            objectiveText.text = prefix + nextStation.GetStationID();
         }
+
+        UIManager.Instance.SetNextStationIcon(nextStation.GetStationID());
+        UIManager.Instance.SetStepIcon(objectiveCount);
     }
 
     public void ArrivedInStation(int stationID)
