@@ -99,6 +99,8 @@ public class GameManager : MonoBehaviour
         }
 
         currentRoute.Add(startingStation);
+
+        UIManager.Instance.SetFirstStationIcon(currentRoute[1].GetStationID());
     }
 
     private void NextObjective()
@@ -144,14 +146,15 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Title:
-                CustomizeManager.Instance.ResetCustomize();
                 currentWagon.DisableOutline();
+                CustomizeManager.Instance.ResetCustomize();
                 currentWagon.ResetWagon();
                 break;
 
             case GameState.Customize:
                 currentWagon.DisableOutline();
                 currentWagon.ResetWagon();
+                GhostManager.Instance.StopGhosts();
                 break;
 
             case GameState.Objective:

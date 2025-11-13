@@ -60,7 +60,7 @@ public class GhostManager : MonoBehaviour
             if (ghost != null)
             {
                 ghost.SetActive(true);
-                ghost.GetComponent<GhostController>().SpawnGhost();
+                ghost.GetComponent<GhostController>().Spawn();
             }
         }
     }
@@ -72,6 +72,17 @@ public class GhostManager : MonoBehaviour
             if (ghost != null)
             {
                 ghost.GetComponent<GhostController>().Play();
+            }
+        }
+    }
+
+    public void StopGhosts()
+    {
+        foreach (var ghost in ghosts)
+        {
+            if (ghost != null)
+            {
+                ghost.GetComponent<GhostController>().Stop();
             }
         }
     }

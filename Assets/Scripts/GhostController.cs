@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GhostController : MonoBehaviour
 {
@@ -13,16 +14,22 @@ public class GhostController : MonoBehaviour
         data = recordedData;
     }
 
-    public void Play()
+    public void Spawn()
     {
         elapsedTime = 0f;
         currentIndex = 0;
+        WagonData.PathPoint step = data.paths[currentIndex];
+        transform.SetLocalPositionAndRotation(step.position, step.rotation);
+    }
+
+    public void Play()
+    {
         isPlaying = true;
     }
 
-    public void SpawnGhost()
+    public void Stop()
     {
-        transform.SetPositionAndRotation(data.paths[0].position, data.paths[0].rotation);
+        isPlaying = false;
     }
 
     private void FixedUpdate()
@@ -39,7 +46,7 @@ public class GhostController : MonoBehaviour
             }
 
             WagonData.PathPoint step = data.paths[currentIndex];
-            transform.SetPositionAndRotation(step.position, step.rotation);
+            transform.SetLocalPositionAndRotation(step.position, step.rotation);
 
             if (elapsedTime > data.paths[data.paths.Count - 1].elapsedTime)
             {

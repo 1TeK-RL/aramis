@@ -54,7 +54,6 @@ public class CustomizeManager : MonoBehaviour
 
         currentMaterial = materials;
         currentWagonMesh.SetMaterial(currentMaterial);
-        Debug.Log("Change Color");
     }
 
     public void UpdateTexts(string newText)

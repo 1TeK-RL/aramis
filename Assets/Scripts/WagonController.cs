@@ -59,7 +59,7 @@ public class WagonController : MonoBehaviour
         isRecording = false;
         currentSpeed = 0f;
         speedSlider.value = 0f;
-        transform.position = Vector3.zero;
+        transform.localPosition = Vector3.zero;
         rb.linearVelocity = Vector3.zero;
     }
 
@@ -135,8 +135,8 @@ public class WagonController : MonoBehaviour
             elapsedTime += Time.fixedDeltaTime;
             recordingData.paths.Add(new WagonData.PathPoint
             {
-                position = transform.position,
-                rotation = transform.rotation,
+                position = transform.localPosition,
+                rotation = transform.localRotation,
                 elapsedTime = elapsedTime
             });
         }

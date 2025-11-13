@@ -1,0 +1,387 @@
+fileFormatVersion: 2
+guid: f83a2b7e4ffd7fc47a94a0ee31420f8b
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arcdetriomphe.png
+    second: {fileID: 2100000, guid: 93dd40b80c88695448f90b115429f798, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Awning
+    second: {fileID: 2100000, guid: 1de00deb0d23a16418a5b9c836624a7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bridge
+    second: {fileID: 2100000, guid: 0d8a30b7615aae041a6cd501b91fe966, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CNAM.png
+    second: {fileID: 2100000, guid: 0618ae895dc60bc49b27afe9869777ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cypres.png
+    second: {fileID: 2100000, guid: c6ed4510a2c925a4f97845d7b4dc13b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gare
+    second: {fileID: 2100000, guid: 81aca6894f127de42b78f38285fa40b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gare_haut
+    second: {fileID: 2100000, guid: 8fbf13a8b53d1214b9f64c3da9e52376, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 82b3afdbabc3cad4188d74508d7665a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: 17e1b9f44972dc94aa15ef58adf0c196, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gravel
+    second: {fileID: 2100000, guid: 6a129ac4a3e2d8543b24e8398305cfd9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: In_tunnel
+    second: {fileID: 2100000, guid: ca48bb883def79a4bb46b6ed3ab175bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampadaire.png
+    second: {fileID: 2100000, guid: cf3fd325499ecfb4c9432c026d4a714a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampadaire.png.001
+    second: {fileID: 2100000, guid: bbbc6a21f2930e3448c6d67b0d2cbb39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Louvre.png
+    second: {fileID: 2100000, guid: b654a3d96ee3bfb4e980a809e65f981a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Maronnier.png
+    second: {fileID: 2100000, guid: 8c8e3fb94963d5840a458d33802f83b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: cf6c3df962149164a971b9ccd8021594, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mountaine
+    second: {fileID: 2100000, guid: aeec6260362837f45969255b08cc4203, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pantheon.png
+    second: {fileID: 2100000, guid: f2b225463beb29b49860033b4e28376e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rail
+    second: {fileID: 2100000, guid: bd4b0559a13e66043b9413b9e4efeb46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RailPoteau.png
+    second: {fileID: 2100000, guid: e2b32e8cd6eeb3e4d8d8ec9d70194ccd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SacreCoeur.png
+    second: {fileID: 2100000, guid: d3b56979999bc174497ccb8671cfc7ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sand
+    second: {fileID: 2100000, guid: 1eaecfdeb9394e34b8c224433f571af7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Water
+    second: {fileID: 2100000, guid: 4f934b26ea9bfd34982e9ed8768f5ca4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ballonFlamme.png
+    second: {fileID: 2100000, guid: 459a0b18cd93a3041818ca2483d1ce42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bibliothequeBatiment.png
+    second: {fileID: 2100000, guid: 397d110b286da1d41b612417fe9b7ec9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bibliothequeSocle.png
+    second: {fileID: 2100000, guid: f48ddfeee51ca6846bce6a1989f2769b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: butteschaumont.png
+    second: {fileID: 2100000, guid: b1605c110d8549240a44b0c2b59e1e2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chene.png
+    second: {fileID: 2100000, guid: 0925a4964f8f3fa42a698bac2946fe1a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eiffel hig base.png
+    second: {fileID: 2100000, guid: ab82dc1c96bbbe64397cf062cbd687a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: geodeSphere.png
+    second: {fileID: 2100000, guid: 223e709e3cc6e354f80da6e9117b8bcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: legTower.png
+    second: {fileID: 2100000, guid: 86a2b0f418f1f2f458ce799b5e740fdf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lower base eiffel.png
+    second: {fileID: 2100000, guid: c505a5a1513443c488565077fdda58fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: main tower.png
+    second: {fileID: 2100000, guid: d347a72b02de25345b05c7b93fcd24bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: railBox.png
+    second: {fileID: 2100000, guid: 74c48816af85f3f499af4777ee55a397, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: soclegeode.png
+    second: {fileID: 2100000, guid: 76fdf9a7cf840b548bd6e8337ceea0a2, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Arcdetriomphe
+    second: {fileID: 2800000, guid: 06ed4094a93aae34884d8bcb37d53d48, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CNAM
+    second: {fileID: 2800000, guid: 99871abcb4939c644b3ae379fb0afc84, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cypres
+    second: {fileID: 2800000, guid: 012ec39c1cf99fa4dbcb69cace17cdc0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lampadaire
+    second: {fileID: 2800000, guid: faac9a12226b91445a326a16dcdb0d26, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Louvre
+    second: {fileID: 2800000, guid: 6e43028243c17724b916b042e5327811, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Maronnier
+    second: {fileID: 2800000, guid: 503c8a2c4fa647d409e780b9b168cdfc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pantheon
+    second: {fileID: 2800000, guid: 48ee48cbbb96ad446881da20124e0d32, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: RailPoteau
+    second: {fileID: 2800000, guid: 0183b268d68051c4db657dae31fd8698, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SacreCoeur
+    second: {fileID: 2800000, guid: 5a35d588f833b2f42b33e32bb920dcc5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ballonFlamme
+    second: {fileID: 2800000, guid: 96a0516e80b32c7468838da793eeb182, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bibliothequeBatiment
+    second: {fileID: 2800000, guid: 14283c5c15e48e5419954164eec7fd35, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bibliothequeSocle
+    second: {fileID: 2800000, guid: fc1e284c67edc4040b28398b80048ae7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: butteschaumont
+    second: {fileID: 2800000, guid: 6b8fccc3ceae0aa4384f6ba174a9f782, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: chene
+    second: {fileID: 2800000, guid: 9a1055a865435854d9ec2d19b420d67a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: eiffel hig base
+    second: {fileID: 2800000, guid: 5b994fde2cc2bb546b415d70687b22c3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: geodeSphere
+    second: {fileID: 2800000, guid: decd35954d523f1419c99fa9a2f90f00, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: legTower
+    second: {fileID: 2800000, guid: 1d58a33114589424bbbcbe428b045ad0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lower base eiffel
+    second: {fileID: 2800000, guid: 11ddd8ce3f4890543b9a714c94818f0b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: main tower
+    second: {fileID: 2800000, guid: 26a2b024a01164f44b5938e3662108f1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: railBox
+    second: {fileID: 2800000, guid: fe190afaf811cd24dbda3aa5b13fc879, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: soclegeode
+    second: {fileID: 2800000, guid: b0838b70631b3fb49980e367e35999b4, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
