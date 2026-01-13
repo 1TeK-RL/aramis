@@ -23,6 +23,7 @@ public class GhostManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+    
 
     public void SetMaxGhosts(int max)
     {

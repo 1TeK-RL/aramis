@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float maxGameTime = 120f;
 
     private List<Station> allStations = new List<Station>();
-    private List<Station> usedStartingStations = new List<Station>();
+    public List<Station> usedStartingStations = new List<Station>();
 
     private List<Station> currentRoute;
     private Station startingStation;
@@ -71,6 +71,13 @@ public class GameManager : MonoBehaviour
         GhostManager.Instance.SetMaxGhosts(allStations.Count);
     }
 
+    public void AddStartingStation(Station station)
+    {
+        if (!usedStartingStations.Contains(station))
+        {
+            usedStartingStations.Add(station);
+        }
+    }
     private void SetupObjective()
     {
         objectiveCount = 0;
@@ -188,7 +195,7 @@ public class GameManager : MonoBehaviour
                 resultWin.wagonName = CustomizeManager.Instance.currentText;
                 resultWin.wagonMaterial = CustomizeManager.Instance.GetCurrentMaterial();
                 resultWin.wagonMeshIndex = CustomizeManager.Instance.GetCurrentWagonIndex();
-
+                DebugManager.Instance.SaveToCSV(resultWin, resultWin.wagonName);
                 GhostManager.Instance.CreateGhost(resultWin);
 
                 currentWagon.DisableOutline();
