@@ -27,3 +27,13 @@ MonoBehaviour:
     m_SpecifySize: 0
     m_Name: marker_04
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4767208006966193011
+      m_GuidHigh: 17030569759551854230
+    m_SerializedTextureGuid:
+      m_GuidLow: 4594906163474733358
+      m_GuidHigh: 9074768234654425817
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Image_Target_aRAmis
+    m_Texture: {fileID: 0}
