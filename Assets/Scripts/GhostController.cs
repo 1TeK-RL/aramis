@@ -1,11 +1,16 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class GhostController : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem loseVFX_1;
+    [SerializeField] private ParticleSystem loseVFX_2;
+
     private WagonData data;
     private float elapsedTime = 0f;
     private int currentIndex = 0;
+
+    private bool hasTriggered = false;
 
     private bool isPlaying = false;
 
@@ -60,11 +65,26 @@ public class GhostController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && isPlaying == true)
+        if (hasTriggered) return;
+
+        if (other.CompareTag("Player") && isPlaying)
         {
-            GameManager.Instance.SetState(GameState.Lose);
-            GhostManager.Instance.DestroyGhost(gameObject);
+            hasTriggered = true;
+            StartCoroutine(LoseSequence());
         }
+    }
+
+    private IEnumerator LoseSequence()
+    {
+        Stop();
+        
+        loseVFX_1.Play();
+        loseVFX_2.Play();
+
+        yield return new WaitForSeconds(0.5f);
+
+        GameManager.Instance.SetState(GameState.Lose);
+        GhostManager.Instance.DestroyGhost(gameObject);
     }
 
     public Station GetStartingStation()

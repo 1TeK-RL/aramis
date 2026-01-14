@@ -51,6 +51,8 @@ public class GhostManager : MonoBehaviour
         ghost.GetComponent<GhostCustomize>().SetCustomization();
 
         ghosts.Enqueue(ghost);
+
+        ghost.SetActive(false);
     }
     
     public void SpawnGhosts()

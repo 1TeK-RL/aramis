@@ -15,6 +15,10 @@ public class WagonController : MonoBehaviour
     [SerializeField] private GameObject BlueDirection;
     [SerializeField] private GameObject RedDirection;
 
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem redLight;
+    [SerializeField] private ParticleSystem blueLight;
+
     [Header("Settings")]
     [SerializeField] private float maxSpeed = 20f;
     [SerializeField] private float acceleration = 10f;
@@ -76,6 +80,8 @@ public class WagonController : MonoBehaviour
         isLeft = true;
         RedDirection.SetActive(false);
         BlueDirection.SetActive(true);
+        redLight.Play();
+        blueLight.Play();
     }
 
     private void SetPosition(Vector3 startPos)
@@ -203,6 +209,9 @@ public class WagonController : MonoBehaviour
 
     public WagonData StopRecording()
     {
+        redLight.Stop();
+        blueLight.Stop();
+
         boxCollider.enabled = false;
 
         isRecording = false;

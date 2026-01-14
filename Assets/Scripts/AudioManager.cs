@@ -66,11 +66,6 @@ public class AudioManager : MonoBehaviour
         intenseSource.Play();
     }
 
-    private void Update()
-    {
-        Debug.Log($"Calm Volume: {calmSource.volume}, Intense Volume: {intenseSource.volume}");
-    }
-
     public void SetIntensity(bool intense)
     {
         if (transitionRoutine != null)

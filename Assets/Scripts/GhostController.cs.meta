@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: 94c56159793cbdb4aa1239ed9d3bfcef
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - loseVFX: {fileID: 316305296967827769, guid: ffd368ae81a920f4898bc683a9ddd537, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
