@@ -4,6 +4,8 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class DebugManager : MonoBehaviour
 {
@@ -12,6 +14,13 @@ public class DebugManager : MonoBehaviour
     [SerializeField] public bool isDebugModeActive = false;
     [SerializeField] public List<Station> stations = new();
     [SerializeField] public List<Material> availableMaterials = new();
+
+    [Header("Debug UI")]
+    [SerializeField] public GameObject debugCanvas;
+    [SerializeField] public TMP_InputField InputField;
+    private bool IsDebugCanvasActive = false;
+    
+
 
     private void Awake()
     {
@@ -28,17 +37,49 @@ public class DebugManager : MonoBehaviour
 
     public void Start()
     {
-        if(isDebugModeActive)
+        debugCanvas.SetActive(false);
+       
+    }
+    public void DebugButton()
+    {
+        if (IsDebugCanvasActive == true)
         {
-            GhostManager.Instance.SetMaxGhosts(10);
-            foreach (var csv in wagonCsvFiles)
-            {
-                WagonData data = LoadFromCSV(csv.text);
-                GhostManager.Instance.CreateGhost(data);
-            }
+            IsDebugCanvasActive = false;
+            debugCanvas.SetActive(false);
+            return;
+        }
+        else
+        {
+            IsDebugCanvasActive = true;
+            debugCanvas.SetActive(true);
         }
     }
 
+    public void LoadButton()
+    {
+        if(InputField.text == "1212")
+        {
+            LoadDebugmode();
+        }
+    }
+    public void CancelButton()
+    {
+        IsDebugCanvasActive = false;
+        InputField.text = "";
+        debugCanvas.SetActive(false);
+    }
+
+    public void LoadDebugmode()
+    {
+        GhostManager.Instance.DestroyAllGhost();
+        GhostManager.Instance.SetMaxGhosts(10);
+        foreach (var csv in wagonCsvFiles)
+        {
+            WagonData data = LoadFromCSV(csv.text);
+            GhostManager.Instance.CreateGhost(data);
+        }
+        InputField.text = "Loaded";
+    }
     public void SaveToCSV(WagonData data, string fileName)
     {
         if (data == null || data.paths == null || data.paths.Count == 0)

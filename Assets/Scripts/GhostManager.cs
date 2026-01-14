@@ -118,4 +118,16 @@ public class GhostManager : MonoBehaviour
 
         Destroy(ghost);
     }
+
+    public void DestroyAllGhost()
+    {
+        while (ghosts.Count > 0)
+        {
+            GameObject ghost = ghosts.Dequeue();
+            if (ghost != null)
+            {
+                Destroy(ghost);
+            }
+        }
+    }
 }

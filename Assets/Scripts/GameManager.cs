@@ -195,7 +195,10 @@ public class GameManager : MonoBehaviour
                 resultWin.wagonName = CustomizeManager.Instance.currentText;
                 resultWin.wagonMaterial = CustomizeManager.Instance.GetCurrentMaterial();
                 resultWin.wagonMeshIndex = CustomizeManager.Instance.GetCurrentWagonIndex();
-                DebugManager.Instance.SaveToCSV(resultWin, resultWin.wagonName);
+                if (DebugManager.Instance.isDebugModeActive)
+                {
+                    DebugManager.Instance.SaveToCSV(resultWin, resultWin.wagonName);
+                }
                 GhostManager.Instance.CreateGhost(resultWin);
 
                 currentWagon.DisableOutline();
