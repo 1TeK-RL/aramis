@@ -1612,14 +1612,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 979772827927015253, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1072707942756896097, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3079663820268728769, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
       propertyPath: redLight
       value: 
@@ -279555,22 +279547,6 @@ PrefabInstance:
     - target: {fileID: 7187728255096354295, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
       propertyPath: m_Name
       value: Wagon
-      objectReference: {fileID: 0}
-    - target: {fileID: 8866346244883100160, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.006
-      objectReference: {fileID: 0}
-    - target: {fileID: 8866346244883100160, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.006
-      objectReference: {fileID: 0}
-    - target: {fileID: 8866346244883100160, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.006
-      objectReference: {fileID: 0}
-    - target: {fileID: 8866346244883100160, guid: 4ae19f490ab991c45968902af63e9b19, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
