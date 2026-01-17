@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 30;
         SetState(GameState.Title);
 
         foreach (Transform stationChild in stationsParent.transform)
