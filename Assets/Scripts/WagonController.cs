@@ -18,6 +18,7 @@ public class WagonController : MonoBehaviour
     [Header("VFX")]
     [SerializeField] private ParticleSystem redLight;
     [SerializeField] private ParticleSystem blueLight;
+    [SerializeField] private Outline outline;
 
     [Header("Settings")]
     [SerializeField] private float maxSpeed = 20f;
@@ -224,25 +225,28 @@ public class WagonController : MonoBehaviour
 
     public void EnableOutline()
     {
-        if (CustomizeManager.Instance.GetCurrentWagonIndex() == 0)
-        {
-            transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Outline>().enabled = true;
-        }
-        else
-        {
-            transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Outline>().enabled = true;
-        }
+        outline.enabled = true;
+        //if (CustomizeManager.Instance.GetCurrentWagonIndex() == 0)
+        //{
+        //    transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Outline>().enabled = true;
+        //}
+        //else
+        //{
+        //    transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Outline>().enabled = true;
+        //}
     }
 
     public void DisableOutline()
     {
-        if (CustomizeManager.Instance.GetCurrentWagonIndex() == 0)
-        {
-            transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Outline>().enabled = false;
-        }
-        else
-        {
-            transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Outline>().enabled = false;
-        }
+        outline.enabled = false;
+
+        //if (CustomizeManager.Instance.GetCurrentWagonIndex() == 0)
+        //{
+        //    transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Outline>().enabled = false;
+        //}
+        //else
+        //{
+        //    transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Outline>().enabled = false;
+        //}
     }
 }
