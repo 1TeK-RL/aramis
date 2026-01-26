@@ -27,13 +27,3 @@ MonoBehaviour:
     m_SpecifySize: 0
     m_Name: Image_Target_aRAmis
     m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5580806236107346279
-      m_GuidHigh: 18192662927945096110
-    m_SerializedTextureGuid:
-      m_GuidLow: 1563902780247920473
-      m_GuidHigh: 6805659281215701336
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
-    m_Name: A3_full
-    m_Texture: {fileID: 0}

@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "SwipeInputActions",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "3cebb0ef-cac8-4380-bd35-19abaec7bd68",
+            "actions": [
+                {
+                    "name": "Rotate",
+                    "type": "Value",
+                    "id": "a38ccf01-85a9-44b1-88da-4a0e413776df",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3fc17351-907c-4a55-8028-755b250a0e37",
+                    "path": "<Touchscreen>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

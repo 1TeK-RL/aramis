@@ -32,6 +32,8 @@ public class ARImageToAnchor : MonoBehaviour
         anchor = null;
 
         UIManager.Instance.SetCalibrationState(CalibrationState.NotCalibrated);
+
+        sceneRoot.gameObject.SetActive(false);
     }
 
     private void OnTrackablesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> args)
@@ -64,6 +66,7 @@ public class ARImageToAnchor : MonoBehaviour
             UIManager.Instance.SetCalibrationState(CalibrationState.Calibrated);
 
             sceneRoot.SetPositionAndRotation(anchor.transform.position, anchor.transform.rotation);
+            sceneRoot.SetParent(anchor.transform, true);
             sceneRoot.gameObject.SetActive(true);
 
             trackedImageManager.enabled = false;
@@ -74,11 +77,15 @@ public class ARImageToAnchor : MonoBehaviour
     {
         if (anchor == null) return;
 
+        sceneRoot.gameObject.SetActive(false);
+        sceneRoot.SetParent(null);
+
+
         anchorManager.TryRemoveAnchor(anchor);
         anchor = null;
 
-        UIManager.Instance.SetCalibrationState(CalibrationState.NotCalibrated);
 
+        UIManager.Instance.SetCalibrationState(CalibrationState.NotCalibrated);
         trackedImageManager.enabled = true;
     }
 }
