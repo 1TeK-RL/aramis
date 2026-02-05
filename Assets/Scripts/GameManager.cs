@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -10,7 +11,8 @@ public enum GameState
     Objective,
     Gameplay,
     Win,
-    Lose
+    Lose,
+    MenuScene
 }
 
 public class GameManager : MonoBehaviour
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        GoToTitle();
         Application.targetFrameRate = 30;
         SetState(GameState.Title);
 
@@ -221,6 +224,12 @@ public class GameManager : MonoBehaviour
     public void GoToCustomize() => SetState(GameState.Customize);
     public void GoToObjective() => SetState(GameState.Objective);
     public void GoToGameplay() => SetState(GameState.Gameplay);
+
+    public void LoadMenuScene()
+    {
+        UIManager.Instance.title_Canvas.SetActive(false);
+        SceneManager.LoadScene("MenuScene");
+    }
 
     private void StartTimer()
     {

@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [Header("Canvases")]
-    [SerializeField] GameObject title_Canvas;
+    [SerializeField] public GameObject title_Canvas;
     [SerializeField] GameObject customize_Canvas;
     [SerializeField] GameObject objective_Canvas;
     [SerializeField] GameObject gameplay_Canvas;
